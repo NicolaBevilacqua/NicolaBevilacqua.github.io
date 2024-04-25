@@ -6,9 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="icon" type="image/png" href="image/logo1.svg">
         <title>Nicola Bevilacqua</title>
+        <!--CSS Files-->
         <link rel="stylesheet" href="css/Stile.css">
-        <link rel="stylesheet" href="css/skins/color.css">
+        <link rel="stylesheet" href="css/skins/color-1.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+        <!--Style Switcher-->
+        <link rel="stylesheet" href="css/skins/color-1.css" class="alternate-style" title="color-1" disabled>
+        <link rel="stylesheet" href="css/skins/color-2.css" class="alternate-style" title="color-2" disabled>
+        <link rel="stylesheet" href="css/skins/color-3.css" class="alternate-style" title="color-3" disabled>
+        <link rel="stylesheet" href="css/skins/color-4.css" class="alternate-style" title="color-4" disabled>
+        <link rel="stylesheet" href="css/skins/color-5.css" class="alternate-style" title="color-5" disabled>
+        <link rel="stylesheet" href="css/style-switcher.css">
     </head>
     <body>
         <!-- Main container start-->
@@ -22,11 +30,11 @@
                     <span></span>
                 </div>
                 <ul class="nav">
-                    <li><a href="#" class="active"><i class="fa fa-home"></i> Home</a></li>
-                    <li><a href="#"><i class="fa fa-user"></i> About</a></li>
-                    <li><a href="#"><i class="fa fa-list"></i> Service</a></li>
-                    <li><a href="#"><i class="fa fa-briefcase"></i> Portfolio</a></li>
-                    <li><a href="#"><i class="fa fa-comments"></i> Contacts</a></li>
+                    <li><a href="#home" class="active"><i class="fa fa-home"></i> Home</a></li>
+                    <li><a href="#about"><i class="fa fa-user"></i> About</a></li>
+                    <li><a href="#services"><i class="fa fa-list"></i> Service</a></li>
+                    <li><a href="#portfolio"><i class="fa fa-briefcase"></i> Portfolio</a></li>
+                    <li><a href="#contacts"><i class="fa fa-comments"></i> Contacts</a></li>
                     <li><a href="#"><i class="fa fa-language"></i> Italian Version</a></li>
                 </ul>
             </div>
@@ -34,24 +42,24 @@
             <!-- Main content start-->
             <div class="main-content">
                 <!-- home section start-->
-                <section class="home section ">
+                <section class="home section active" id="home">
                     <div class="container">
                         <div class="row">
                             <div class="home-info padd-15">
                                 <h3 class="hello">Hello, my name is <span class="name">Nicola Bevilacqua</span></h3>
                                 <h3 class="my-profession">I' m a <span class="typing">Student</span></h3>
                                 <p>I'm a fourth-year computer science student with a passion for algorithms and a knack for problem-solving. With a keen eye for detail and a drive for innovation, he's poised to make waves in the tech industry and many more...</p>
-                                <a href="#contact" class="btn hire-me">Hire Me</a>
+                                <a href="image/CV/BevilacquaNicolaEng.pdf" class="btn">Download CV</a>
                             </div>
                             <div class="home-img padd-15">
-                                <img src="image/logo.png" alt="A photo of me" title="A photo of me">
+                                <img src="image/io.png" alt="A photo of me" title="A photo of me">
                             </div>
                         </div>
                     </div>
                 </section>
                 <!-- home section end-->
                 <!-- about section start-->
-                <section class="about section ">
+                <section class="about section " id="about">
                     <div class="container">
                         <div class="row">
                             <div class="section-title padd-15">
@@ -96,8 +104,7 @@
                                         </div>
                                         <div class="row">
                                             <div class="buttons padd-15">
-                                                <a href="#" class="btn">Download CV</a>
-                                                <a href="#contact" class="btn hire-me">Hire Me</a>
+                                                <a href="#contacts" data-section-index="1" class="btn hire-me">Hire Me</a>
                                             </div>
                                         </div>
                                     </div>
@@ -241,7 +248,7 @@
                 </section>
                 <!-- about section end-->
                 <!-- service section start-->
-                <section class="service section ">
+                <section class="service section " id="services">
                     <div class="container">
                         <div class="row">
                             <div class="section-title padd-15">
@@ -320,7 +327,7 @@
                 </section>
                 <!-- service section end-->
                 <!-- portfolio section start-->
-                <section class="portfolio section ">
+                <section class="portfolio section " id="portfolio">
                     <div class="container">
                         <div class="row">
                             <div class="section-title padd-15">
@@ -392,7 +399,7 @@
                 </section>
                 <!-- portfolio section end-->
                 <!-- contact us section start-->
-                <section class="contact section">
+                <section class="contact section" id="contacts">
                     <div class="container">
                         <div class="row">
                             <div class="section-title padd-15">
@@ -476,6 +483,27 @@
             <!-- Main content end-->
         </div>
         <!-- Main container end-->
+        <!-- Style Switcher Start-->
+        <div class="style-switcher">
+            <div class="style-switcher-toggler s-icon">
+                <i class="fas fa-cog fa-spin"></i>
+            </div>
+            <div class="day-night s-icon">
+                <i class="fas "></i>
+            </div>
+            <h4>Theme Colors</h4>
+            <div class="colors">
+                <span class="color-1" onclick="setActiveStyle('color-1')"></span>
+                <span class="color-2" onclick="setActiveStyle('color-2')"></span>
+                <span class="color-3" onclick="setActiveStyle('color-3')"></span>
+                <span class="color-4" onclick="setActiveStyle('color-4')"></span>
+                <span class="color-5" onclick="setActiveStyle('color-5')"></span>
+            </div>
+        </div>
+        <!-- Style Switcher end-->
+        <!-- JS file-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js" referrerpolicy="no-referrer"></script>
         <script src="js/script.js"></script>
+        <script src="js/style-switcher.js"></script>
     </body>
 </html>
