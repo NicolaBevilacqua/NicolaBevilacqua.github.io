@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+		<title>La Torre di Hanoi</title>
+		<link rel="icon" type="image/png" href="icon.png"> <!-- Inserimento della favicon vicino al titolo -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">	<!-- Integrazione CSS Bootstrap -->
+		<link rel="stylesheet" href="Style.css" > <!-- Inserire al posto di mystyle.css il nome del file del proprio CSS -->
+	</head>
+	<body>
+		<header>
+			<!-- Intestazione -->
+			<center><h1>La Torre di Hanoi</h1></center>
+		</header>
+		<main>
+			
+			<!-- Corpo -->
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<h2>La Storia del Gioco</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4">
+						<img src="tempio.jpg" style="width:100%" alt="tempio indù" title="tempio indù"/>
+					</div>
+					<div class="col-8">
+						<p style="padding:4%">Il gioco fu inventato nel 1883 dal matematico francese Édouard Lucas che diffuse il gioco sotto lo pseudonimo di N.
+						Claus de Siam, mandarino del collegio di Li-Sou-Stian.
+						La leggenda secondo la quale in un tempio Indù alcuni monaci sono costantemente impegnati a spostare su tre colonne di diamante 64 dischi d'oro secondo le regole della Torre di Hanoi (a volte chiamata Torre di Brahmā),
+						è stata inventata dalla ditta che per prima ha messo in commercio il rompicapo.
+						La leggenda narra che quando i monaci completeranno il lavoro, il mondo finirà.
+						Il numero minimo di mosse necessarie per risolvere il gioco equivale infatti a 2 elevato al numero di dischi meno 1. 
+						I monaci della leggenda dovranno quindi compiere 18.446.744.073.709.551.615 mosse (264 - 1),
+						compiendo una mossa al secondo il mondo finirà tra 5.845.580.504 secoli.
+						Esistono anche versioni videoludiche del rompicapo</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h2>Come calcolare il minimo di mosse per arrivare alla soluzione</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-8">
+						<p style="padding:4%">
+						La proprietà matematica base è che il numero minimo di mosse necessarie per completare il gioco è 2^n-1,
+						dove n è il numero di dischi.Ad esempio avendo 3 dischi, il numero di mosse minime è 7. Di conseguenza, secondo la leggenda, i monaci di Hanoi dovrebbero effettuare almeno 18.446.744.073.709.551.615 mosse prima che il mondo finisca, essendo 
+						n=64. In altre parole, anche supponendo che i monaci facciano una mossa al secondo il mondo finirà tra 5.845.580.504 secoli.
+						</p>
+					</div>
+					<div class="col-4">
+						<img src="torre-di-hanoi.webp" style="width:100%" alt="la torre di hanoi" title="la torre di hanoi"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h2>Ora mettiti alla prova giocando</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h3 id="moveCounter">Mosse: 0</h3>
+					</div>
+					<div class="col">
+						<h3 >Mosse minime: 15</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h3 id="winMessage" style="color: #c50000; font-weight: bold;"></h3>
+					</div>
+				</div>
+				<div class="row">
+					<div id="pole1" class="col-4">						
+					</div>
+					<div id="pole2" class="col-4">
+					</div>
+					<div id="pole3" class="col-4">
+					</div>
+				</div>
+				<div class="row" style="margin-top:20px;">
+					<div class="col-4">
+						<center><button id="btn1" class="btn btn-primary" onclick="actionPole(1)">Prendi</button></center>
+					</div>
+					<div class="col-4">
+						<center><button id="btn2" class="btn btn-primary" onclick="actionPole(2)">Prendi</button></center>
+					</div>
+					<div class="col-4">
+						<center><button id="btn3" class="btn btn-primary" onclick="actionPole(3)">Prendi</button></center>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<center><button style="margin-top:2%" id="restartBtn" class="btn btn-danger" onclick="restartGame()">Restart</button></center>
+					</div>
+					<div class="col">
+						<center><button style="margin-top:2%" id="IndizioBtn" class="btn btn-success" onclick="indizio()">Suggerimento</button></center>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4"></div>
+					<div id="myHand" class="col-4" Style="margin-top:2%"></div>
+					<div class="col-4"></div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="alert alert-danger" role="alert" style="margin-top: 2%">
+							Attenzione se scendi più giù di cosi troverai la soluzione del gioco quindi se vuoi metterti alla prova non scendere
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h2>Soluzione</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="accordion" id="accordionExample">
+							<div class="accordion-item">
+								<h2 class="accordion-header">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="background-image:linear-gradient(to left ,#fbffb2,#faffa7,#faff9c,#f9ff91,#ffd99c,#ffd591,#ffb470,#ffa451) !important">
+									Prime 5 mosse
+								</button>
+								</h2>
+								<div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample" style="background-image: linear-gradient( white, #bbbcbb) !important">
+								<div class="accordion-body">
+									<ol>
+										<li>Muovi il disco rosso dalla posizione 1 alla 2
+										<li>Muovi il disco lilla dalla posizione 1 alla 3
+										<li>Muovi il disco rosso dalla posizione 2 alla 3
+										<li>Muovi il disco verde dalla posizione 1 alla 2
+										<li>Muovi il disco rosso dalla posizione 3 alla 1
+									</ol>
+								</div>
+								</div>
+							</div>
+							<div class="accordion-item">
+								<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="background-image:linear-gradient(to left ,#fbffb2,#faffa7,#faff9c,#f9ff91,#ffd99c,#ffd591,#ffb470,#ffa451) !important">
+									Dalla mossa 6 alla mossa 10
+								</button>
+								</h2>
+								<div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="background-image: linear-gradient( white, #bbbcbb) !important">
+								<div class="accordion-body">
+									<ol>
+										<li>Muovi il disco lilla dalla posizione 3 alla 2
+										<li>Muovi il disco rosso dalla posizione 1 alla 2
+										<li>Muovi il disco azzurro dalla posizione 1 alla 3
+										<li>Muovi il disco rosso dalla posizione 2 alla 3
+										<li>Muovi il disco lilla dalla posizione 2 alla 1
+									</ol>
+								</div>
+								</div>
+							</div>
+							<div class="accordion-item">
+								<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="background-image:linear-gradient(to left ,#fbffb2,#faffa7,#faff9c,#f9ff91,#ffd99c,#ffd591,#ffb470,#ffa451) !important">
+									Ultime 5 mosse
+								</button>
+								</h2>
+								<div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="background-image: linear-gradient( white, #bbbcbb) !important" >
+								<div class="accordion-body">
+									<ol>
+										<li>Muovi il disco rosso dalla posizione 3 alla 1
+										<li>Muovi il disco verde dalla posizione 2 alla 3
+										<li>Muovi il disco rosso dalla posizione 1 alla 2
+										<li>Muovi il disco lilla dalla posizione 1 alla 3
+										<li>Muovi il disco rosso dalla posizione 2 alla 3
+									</ol>
+								</div>
+								</div>
+							</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer>
+			<div class="container">
+                <div class="row" style="margin-top:2%">
+                   <div class="col-9">
+                      <center><img src="../image/logo.png" height="200px" width="200px"/></center>
+                   </div>
+                   <div class="col-3">
+                      <nav aria-label="Lingua selezionata">
+                         <ul class="pagination pagination-lg">
+                            <li class="page-item" aria-current="page"  >
+                               <a class="page-link" href="Torri di HanoiEn.html">
+                               <img src="ing.png" alt="English flag" title="English flag" height="30px"/>
+                               </a>
+                            </li>
+                            <li class="page-item active">
+                               <a class="page-link" href="Torri di Hanoi.html" >
+                               <img src="ita.png" alt="Italian flag" title="Italian flag" height="30px"/>
+                               </a>
+                            </li>
+                         </ul>
+                      </nav>
+                   </div>
+                </div>
+             </div>
+		</footer>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> <!-- Integrazione Javascript Bootstrap -->
+	<script>
+		var pole1 = [1,2,3,4];
+		var pole2 = [];
+		var pole3 = [];
+		var mano = 0;
+		var moves = 0;
+		
+		drawScene();
+		
+		function drawScene(){
+			drawPoles();
+			drawHand();
+			checkButtons();
+			checkWin();
+		}
+		
+		function drawPoles(){
+			for(let i=1;i<4;i++){
+				drawPole(getPole(i), getDivPole(i));
+			}
+		}
+		
+		function getDivPole(n){
+			return document.getElementById("pole"+n);
+		}
+		
+		function drawPole(pole, div){
+			div.innerHTML = "";
+			for(let i=0; i<pole.length; i++){
+				div.innerHTML+=drawDisk(pole[i]);
+			}
+		}
+		
+		function checkButtons(){
+			for(let i=1;i<4;i++)
+				checkButton(i);
+		}	
+
+		function getPole(n){
+			switch(n){
+				case 1: return pole1;
+				case 2: return pole2;
+				case 3: return pole3;
+			}
+		}
+		
+		function checkButton(n){
+			let button = document.getElementById("btn" + n);
+			let pole = getPole(n);
+			if(mano==0){
+				button.innerText = "Prendi";
+				button.disabled = pole.length == 0;
+			} else {
+				button.innerText = "Metti";				
+				button.disabled = pole.length > 0 ? pole[0] < mano : false;	
+			}
+		}
+		
+		function drawHand(){
+			let handDiv = document.getElementById("myHand");
+			handDiv.innerHTML = drawDisk(mano);
+		}
+		
+		function actionPole(n){
+			if(mano==0){
+				mano = getPole(n).shift();
+			} else {
+				getPole(n).unshift(mano);
+				mano = 0;
+				moves=moves+1;
+				updateMoveCounter();
+			}
+			drawScene();
+		}
+		
+		function getColor(dimension){
+			let color = "#3357d7";
+			switch(dimension){
+				case 1: color = "#d73333"; break;
+				case 2: color = "#c733d7"; break;		
+				case 3: color = "#2ad219"; break;
+			}
+			return color;
+		}
+		
+		function drawDisk(dimension){
+			let color = getColor(dimension);
+			return '<center><div class="disk" style="background-color:'+color+'; width:'+dimension*10+'%;"></div></center>';
+		}
+		function checkWin(){
+			if (pole3.length === 4) {
+				document.getElementById("winMessage").innerText = "Complimenti! Hai vinto!";
+				restartBtn.innerText = "Rigioca";
+			}
+		}
+		function restartGame(){
+            moves = 0;
+            mano = 0;
+            pole1 = [1,2,3,4];
+            pole2 = [];
+            pole3 = [];
+			updateMoveCounter()
+			document.getElementById("winMessage").innerText = "";
+			restartBtn.innerText = "Restart";
+            drawScene();
+        }
+		function indizio(){
+				switch(moves){
+					case 0: document.getElementById("winMessage").innerText = "Muovi il disco rosso dalla posizione 1 alla 2"; break;
+					case 1: document.getElementById("winMessage").innerText = "Dovresti poter muovere il disco lilla dalla posizione 1 alla 3"; break;
+					case 2: document.getElementById("winMessage").innerText = "Dovresti poter muovere il disco rosso dalla posizione 2 alla 3"; break;
+					case 3: document.getElementById("winMessage").innerText = "Dovresti poter muovere il disco verde dalla posizione 1 alla 2"; break;
+					case 4: document.getElementById("winMessage").innerText = "Dovresti poter muovere il disco rosso dalla posizione 3 alla 1"; break;
+					case 5: document.getElementById("winMessage").innerText = "Dovresti poter muovere il disco lilla dalla posizione 3 alla 2"; break;
+					case 6: document.getElementById("winMessage").innerText = "Dovresti poter muovere il disco rosso dalla posizione 1 alla 2"; break;
+					case 7: document.getElementById("winMessage").innerText = "Dovresti poter muovere il disco azzurro dalla posizione 1 alla 3"; break;
+					case 8: document.getElementById("winMessage").innerText = "Dovresti poter muovere il disco rosso dalla posizione 2 alla 3"; break;
+					case 9: document.getElementById("winMessage").innerText = "Dovresti poter muovere il disco lilla dalla posizione 2 alla 1"; break;
+					case 10: document.getElementById("winMessage").innerText = "Dovresti poter muovere il disco rosso dalla posizione 3 alla 1"; break;
+					case 11: document.getElementById("winMessage").innerText = "Dovresti poter muovere il disco verde dalla posizione 2 alla 3"; break;
+					case 12: document.getElementById("winMessage").innerText = "Dovresti poter muovere il disco rosso dalla posizione 1 alla 2"; break;
+					case 13: document.getElementById("winMessage").innerText = "Dovresti poter muovere il disco lilla dalla posizione 1 alla 3"; break;
+					case 14: document.getElementById("winMessage").innerText = "Dovresti poter muovere il disco rosso dalla posizione 2 alla 3"; break;
+				}	
+		}
+		function updateMoveCounter() {
+			document.getElementById("moveCounter").innerText = "Mosse: " + moves;
+			if(moves===15){
+				IndizioBtn.disable=true;
+				document.getElementById("winMessage").innerText = "";
+			}
+		}
+	</script>
+</html>

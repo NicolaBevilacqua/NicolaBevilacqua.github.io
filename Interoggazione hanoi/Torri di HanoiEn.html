@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="it">
+	<head>
+		<title>The Tower of Hanoi</title>
+		<link rel="icon" type="image/png" href="icon.png"> <!-- Inserimento della favicon vicino al titolo -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">	<!-- Integrazione CSS Bootstrap -->
+		<link rel="stylesheet" href="Style.css" > <!-- Inserire al posto di mystyle.css il nome del file del proprio CSS -->
+	</head>
+	<body>
+		<header>
+			<!-- Intestazione -->
+			<center><h1>The Tower of Hanoi</h1></center>
+		</header>
+		<main>
+			
+			<!-- Corpo -->
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<h2>The History of the Game</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4">
+						<img src="tempio.jpg" style="width:100%" alt="tempio indù" title="tempio indù"/>
+					</div>
+					<div class="col-8">
+						<p style="padding:4%">The game was invented in 1883 by the French mathematician Édouard Lucas who popularized the game under the pseudonym N.
+                            Claus de Siam, mandarin of the Li-Sou-Stian college.
+                            The legend according to which in a Hindu temple some monks are constantly busy moving 64 gold discs on three diamond columns according to the rules of the Tower of Hanoi (sometimes called Brahma's Tower),
+                            it was invented by the company that first put the puzzle on the market.
+                            Legend has it that when the monks complete the work, the world will end.
+                            The minimum number of moves necessary to solve the game is in fact equal to 2 raised to the number of discs minus 1.
+                            The monks of the legend will therefore have to make 18,446,744,073,709,551,615 moves (264 - 1),
+                            making one move per second the world will end in 5,845,580,504 centuries.
+                            There are also video game versions of the puzzle</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h2>How to calculate the minimum number of moves to reach the solution</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-8">
+						<p style="padding:4%">
+                            The basic mathematical property is that the minimum number of moves needed to complete the game is 2^n-1,
+                            where n is the number of discs. For example, having 3 discs, the minimum number of moves is 7. Consequently, according to legend, the monks of Hanoi should make at least 18,446,744,073,709,551,615 moves before the world ends, being
+                            n=64. In other words, even assuming that the monks make one move per second the world will end in 5,845,580,504 centuries.
+						</p>
+					</div>
+					<div class="col-4">
+						<img src="torre-di-hanoi.webp" style="width:100%" alt="la torre di hanoi" title="la torre di hanoi"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h2>
+                            Now test yourself by playing</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h3 id="moveCounter">Moves: 0</h3>
+					</div>
+					<div class="col">
+						<h3 >Minimal moves: 15</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h3 id="winMessage" style="color: #c50000; font-weight: bold;"></h3>
+					</div>
+				</div>
+				<div class="row">
+					<div id="pole1" class="col-4">						
+					</div>
+					<div id="pole2" class="col-4">
+					</div>
+					<div id="pole3" class="col-4">
+					</div>
+				</div>
+				<div class="row" style="margin-top:20px;">
+					<div class="col-4">
+						<center><button id="btn1" class="btn btn-primary" onclick="actionPole(1)">Take</button></center>
+					</div>
+					<div class="col-4">
+						<center><button id="btn2" class="btn btn-primary" onclick="actionPole(2)">Take</button></center>
+					</div>
+					<div class="col-4">
+						<center><button id="btn3" class="btn btn-primary" onclick="actionPole(3)">Take</button></center>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<center><button style="margin-top:2%" id="restartBtn" class="btn btn-danger" onclick="restartGame()">Restart</button></center>
+					</div>
+					<div class="col">
+						<center><button style="margin-top:2%" id="IndizioBtn" class="btn btn-success" onclick="indizio()">Suggestion</button></center>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-4"></div>
+					<div id="myHand" class="col-4" Style="margin-top:2%"></div>
+					<div class="col-4"></div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="alert alert-danger" role="alert" style="margin-top: 2%">
+							Be careful if you go further down than this you will find the solution to the game so if you want to test yourself don't go down
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<h2>Solution</h2>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col">
+						<div class="accordion" id="accordionExample">
+							<div class="accordion-item">
+								<h2 class="accordion-header">
+								<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="background-image:linear-gradient(to left ,#fbffb2,#faffa7,#faff9c,#f9ff91,#ffd99c,#ffd591,#ffb470,#ffa451) !important">
+									First 5 moves
+								</button>
+								</h2>
+								<div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample" style="background-image: linear-gradient( white, #bbbcbb) !important">
+								<div class="accordion-body">
+									<ol>
+                                        <li>Move the red disk from position 1 to 2
+                                        <li>Move the lilac disk from position 1 to 3
+                                        <li>Move the red disk from position 2 to 3
+                                        <li>Move the green disk from position 1 to 2
+                                        <li>Move the red disk from position 3 to 1
+									</ol>
+								</div>
+								</div>
+							</div>
+							<div class="accordion-item">
+								<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" style="background-image:linear-gradient(to left ,#fbffb2,#faffa7,#faff9c,#f9ff91,#ffd99c,#ffd591,#ffb470,#ffa451) !important">
+									From move 6 to move 10
+								</button>
+								</h2>
+								<div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="background-image: linear-gradient( white, #bbbcbb) !important">
+								<div class="accordion-body">
+									<ol>
+                                        <li>Move the lilac disk from position 3 to 2
+                                        <li>Move the red disk from position 1 to 2
+                                        <li>Move the blue disk from position 1 to 3
+                                        <li>Move the red disk from position 2 to 3
+                                        <li>Move the lilac disk from position 2 to 1
+									</ol>
+								</div>
+								</div>
+							</div>
+							<div class="accordion-item">
+								<h2 class="accordion-header">
+								<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" style="background-image:linear-gradient(to left ,#fbffb2,#faffa7,#faff9c,#f9ff91,#ffd99c,#ffd591,#ffb470,#ffa451) !important">
+									Last 5 moves
+								</button>
+								</h2>
+								<div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample" style="background-image: linear-gradient( white, #bbbcbb) !important" >
+								<div class="accordion-body">
+									<ol>
+                                        <li>Move the red disk from position 3 to 1
+                                        <li>Move the green disk from position 2 to 3
+                                        <li>Move the red disk from position 1 to 2
+                                        <li>Move the lilac disk from position 1 to 3
+                                        <li>Move the red disk from position 2 to 3
+									</ol>
+								</div>
+								</div>
+							</div>
+							</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<footer>
+			<div class="container">
+                <div class="row" style="margin-top:2%">
+                   <div class="col-9">
+                      <center><img src="../image/logo.png" height="200px" width="200px"/></center>
+                   </div>
+                   <div class="col-3">
+                      <nav aria-label="Lingua selezionata">
+                         <ul class="pagination pagination-lg">
+                            <li class="page-item active" aria-current="page"  >
+                               <a class="page-link" href="Torri di HanoiEn.html">
+                               <img src="ing.png" alt="English flag" title="English flag" height="30px"/>
+                               </a>
+                            </li>
+                            <li class="page-item ">
+                               <a class="page-link" href="Torri di Hanoi.html" >
+                               <img src="ita.png" alt="Italian flag" title="Italian flag" height="30px"/>
+                               </a>
+                            </li>
+                         </ul>
+                      </nav>
+                   </div>
+                </div>
+             </div>
+		</footer>
+	</body>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> <!-- Integrazione Javascript Bootstrap -->
+	<script>
+		var pole1 = [1,2,3,4];
+		var pole2 = [];
+		var pole3 = [];
+		var mano = 0;
+		var moves = 0;
+		
+		drawScene();
+		
+		function drawScene(){
+			drawPoles();
+			drawHand();
+			checkButtons();
+			checkWin();
+		}
+		
+		function drawPoles(){
+			for(let i=1;i<4;i++){
+				drawPole(getPole(i), getDivPole(i));
+			}
+		}
+		
+		function getDivPole(n){
+			return document.getElementById("pole"+n);
+		}
+		
+		function drawPole(pole, div){
+			div.innerHTML = "";
+			for(let i=0; i<pole.length; i++){
+				div.innerHTML+=drawDisk(pole[i]);
+			}
+		}
+		
+		function checkButtons(){
+			for(let i=1;i<4;i++)
+				checkButton(i);
+		}	
+
+		function getPole(n){
+			switch(n){
+				case 1: return pole1;
+				case 2: return pole2;
+				case 3: return pole3;
+			}
+		}
+		
+		function checkButton(n){
+			let button = document.getElementById("btn" + n);
+			let pole = getPole(n);
+			if(mano==0){
+				button.innerText = "Take";
+				button.disabled = pole.length == 0;
+			} else {
+				button.innerText = "Put";				
+				button.disabled = pole.length > 0 ? pole[0] < mano : false;	
+			}
+		}
+		
+		function drawHand(){
+			let handDiv = document.getElementById("myHand");
+			handDiv.innerHTML = drawDisk(mano);
+		}
+		
+		function actionPole(n){
+			if(mano==0){
+				mano = getPole(n).shift();
+			} else {
+				getPole(n).unshift(mano);
+				mano = 0;
+				moves=moves+1;
+				updateMoveCounter();
+			}
+			drawScene();
+		}
+		
+		function getColor(dimension){
+			let color = "#3357d7";
+			switch(dimension){
+				case 1: color = "#d73333"; break;
+				case 2: color = "#c733d7"; break;		
+				case 3: color = "#2ad219"; break;
+			}
+			return color;
+		}
+		
+		function drawDisk(dimension){
+			let color = getColor(dimension);
+			return '<center><div class="disk" style="background-color:'+color+'; width:'+dimension*10+'%;"></div></center>';
+		}
+		function checkWin(){
+			if (pole3.length === 4) {
+				document.getElementById("winMessage").innerText = "Compliments! You won!";
+				restartBtn.innerText = "Play again";
+			}
+		}
+		function restartGame(){
+            moves = 0;
+            mano = 0;
+            pole1 = [1,2,3,4];
+            pole2 = [];
+            pole3 = [];
+			updateMoveCounter()
+			document.getElementById("winMessage").innerText = "";
+			restartBtn.innerText = "Restart";
+            drawScene();
+        }
+		function indizio(){
+				switch(moves){
+                    case 0: document.getElementById("winMessage").innerText = "Move the red disk from position 1 to 2"; break;
+                    case 1: document.getElementById("winMessage").innerText = "You should be able to move the lilac disk from position 1 to 3"; break;
+                    case 2: document.getElementById("winMessage").innerText = "You should be able to move the red disk from position 2 to 3"; break;
+                    case 3: document.getElementById("winMessage").innerText = "You should be able to move the green disk from position 1 to 2"; break;
+                    case 4: document.getElementById("winMessage").innerText = "You should be able to move the red disk from position 3 to 1"; break;
+                    case 5: document.getElementById("winMessage").innerText = "You should be able to move the lilac disk from position 3 to 2"; break;
+                    case 6: document.getElementById("winMessage").innerText = "You should be able to move the red disk from position 1 to 2"; break;
+                    case 7: document.getElementById("winMessage").innerText = "You should be able to move the blue disk from position 1 to 3"; break;
+                    case 8: document.getElementById("winMessage").innerText = "You should be able to move the red disk from position 2 to 3"; break;
+                    case 9: document.getElementById("winMessage").innerText = "You should be able to move the lilac disk from position 2 to 1"; break;
+                    case 10: document.getElementById("winMessage").innerText = "You should be able to move the red disk from position 3 to 1"; break;
+                    case 11: document.getElementById("winMessage").innerText = "You should be able to move the green disk from position 2 to 3"; break;
+                    case 12: document.getElementById("winMessage").innerText = "You should be able to move the red disk from position 1 to 2"; break;
+                    case 13: document.getElementById("winMessage").innerText = "You should be able to move the lilac disk from position 1 to 3"; break;
+                    case 14: document.getElementById("winMessage").innerText = "You should be able to move the red disk from position 2 to 3"; break;
+				}	
+		}
+		function updateMoveCounter() {
+			document.getElementById("moveCounter").innerText = "Moves: " + moves;
+			if(moves===15){
+				IndizioBtn.disable=true;
+				document.getElementById("winMessage").innerText = "";
+			}
+		}
+	</script>
+</html>
