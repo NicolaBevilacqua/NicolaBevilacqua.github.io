@@ -1,0 +1,27 @@
+*
+{
+    color: white;
+}
+h1{
+	font-size:500%;
+}
+h3{
+    padding-top: 5px;
+	font-size:300%;
+	text-align:center;
+}
+p
+{
+    text-align: justify;
+    padding: 20px;
+}
+.containers .row .col-4 img
+{
+    width: 50%;
+    border-radius: 35%;
+}
+body{
+    padding-left: 10px;
+    padding-right: 15px;
+    background-image: linear-gradient(to top right ,#fffe66,#fffd33,#00e600,#00b300,#800000,#4d0000,#00064d,#000533);
+  }
