@@ -74,7 +74,7 @@ nav ul li {
 nav ul li a {
   line-height: 80px;
   color: #151515;
-  padding: 12px 20px; /* Ridotto padding per migliore responsività */
+  padding: 12px 20px;
   text-decoration: none;
   text-transform: uppercase;
   transition: 0.3s;
@@ -91,7 +91,6 @@ nav ul li a:focus {
   outline: none;
 }
 
-/* Stili per il collegamento alla pagina in inglese */
 nav ul li a.lang-switch {
   padding: 12px 10px;
 }
@@ -153,13 +152,12 @@ nav ul li a.lang-switch {
   transform: scale(1.05);
 }
 
-/* Stili per i titoli, utilizzando un font simile alla scrittura greca e centrati */
+/* Stili per i titoli */
 h2, h3 {
   font-family: var(--font-family-secondary);
   text-align: center;
 }
 
-/* Aggiunta di dimensioni più grandi per i titoli */
 h2 {
   font-size: var(--font-size-h2);
   margin-bottom: 20px;
@@ -168,6 +166,25 @@ h2 {
 h3 {
   font-size: var(--font-size-h3);
   margin-bottom: 10px;
+}
+/* classe per le introduzione*/
+.introduzione
+{
+  text-align: center !important;
+}
+/*Gestione delle liste per gli idei*/
+.god-container .text ul
+{
+  list-style: none;
+}
+.god-container .text ul li
+{
+  font-family: var(--font-family-secondary);
+  font-size: 0,5em;
+}
+.god-container .text ul li p
+{
+  font-family: var(--font-family-primary) !important;
 }
 
 /* Media Queries per la Responsività */
