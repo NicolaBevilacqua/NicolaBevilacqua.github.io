@@ -66,22 +66,98 @@ h2{
 	max-height:150px;
 	width:auto;
 }
-/* Add to the end of the existing stile.css file */
-
-/* Responsive adjustments for mobile devices */
+/* Mobile Responsive Design */
 @media screen and (max-width: 768px) {
     body {
-        background-size: cover !important;
-        background-position: center !important;
+        background-image: linear-gradient(to top right, #ff8080, #ff3333, #e60000, #b30000, #800000, #4d0000, #660000, black) !important;
+        background-attachment: scroll !important;
     }
 
-    /* Make images responsive */
+    /* Responsive Typography */
+    h1 {
+        font-size: 300% !important;
+        text-align: center !important;
+    }
+
+    h2 {
+        font-size: 250% !important;
+        text-align: center !important;
+    }
+
+    /* Improved Image Responsiveness */
     img {
         max-width: 100% !important;
         height: auto !important;
+        display: block !important;
+        margin: 0 auto !important;
     }
 
-    /* Adjustments for headers */
+    /* Flexible Layout */
+    .container {
+        width: 95% !important;
+        padding: 0 10px !important;
+        margin: 0 auto !important;
+    }
+
+    .row {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        margin: 10px 0 !important;
+    }
+
+    /* Card Improvements */
+    .carta {
+        width: 100% !important;
+        margin-bottom: 20px !important;
+    }
+
+    .imclan {
+        max-height: 120px !important;
+        object-fit: contain !important;
+    }
+
+    /* Dropdown and Navigation */
+    .dropdown {
+        text-align: center !important;
+        padding: 0 !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Accordion Adjustments */
+    .accordion-button {
+        font-size: 0.9rem !important;
+        padding: 10px !important;
+    }
+
+    /* Footer Responsiveness */
+    footer .row {
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    footer .col-3, 
+    footer .col-6 {
+        width: 100% !important;
+        text-align: center !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Language Selection */
+    .pagination {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+    }
+
+    /* Button Improvements */
+    .btn {
+        width: 100% !important;
+        margin: 10px 0 !important;
+        text-align: center !important;
+    }
+}
+
+/* Small Mobile Devices */
+@media screen and (max-width: 480px) {
     h1 {
         font-size: 250% !important;
     }
@@ -90,55 +166,7 @@ h2{
         font-size: 200% !important;
     }
 
-    /* Dropdown menu */
-    .dropdown {
-        padding-left: 0 !important;
-        text-align: center !important;
-    }
-
-    /* Card layouts */
-    .carta {
-        margin-bottom: 20px !important;
-        width: 100% !important;
-    }
-
-    /* Accordion adjustments */
-    .accordion-button {
-        font-size: 0.9rem !important;
-    }
-
-    /* Improve column layouts */
-    .row > .col, 
-    .row > [class*='col-'] {
-        margin-bottom: 15px !important;
-    }
-
-    /* Footer adjustments */
-    footer .pagination {
-        justify-content: center !important;
-    }
-
-    /* Ensure text is readable */
     * {
-        font-size: 16px !important;
-    }
-
-    /* Prevent overflow on small screens */
-    .container {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-    }
-
-    /* Make tables scrollable */
-    .table-responsive {
-        overflow-x: auto !important;
-    }
-}
-
-/* Ensure Bootstrap's responsive utilities are working */
-@media (max-width: 576px) {
-    .btn {
-        width: 100% !important;
-        margin-bottom: 10px !important;
+        font-size: 14px !important;
     }
 }
