@@ -79,10 +79,4 @@ document.addEventListener('DOMContentLoaded', function () {
       this.style.boxShadow = 'none';
     });
   });
-  function handleNavigation(e) {
-    targetSection.scrollIntoView({ 
-      behavior: 'smooth', 
-      block: 'start' 
-    });
-  }
 });
