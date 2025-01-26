@@ -66,70 +66,69 @@ h2{
 	max-height:150px;
 	width:auto;
 }
-/* Mobile Responsive Design */
+/* Mobile Responsive Fixes */
 @media screen and (max-width: 768px) {
+    /* Reset padding and margins */
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
     body {
-        background-image: linear-gradient(to top right, #ff8080, #ff3333, #e60000, #b30000, #800000, #4d0000, #660000, black) !important;
-        background-attachment: scroll !important;
+        overflow-x: hidden;
+        width: 100%;
     }
 
-    /* Responsive Typography */
-    h1 {
-        font-size: 300% !important;
+    .container {
+        width: 100% !important;
+        padding: 5px !important;
+        margin: 0 !important;
+    }
+
+    /* Flex layout per prevenire sovrapposizioni */
+    .row {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .col, [class*='col-'] {
+        width: 100% !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Dropdown menu fix */
+    .dropdown {
+        position: relative !important;
+        width: 100% !important;
         text-align: center !important;
     }
 
-    h2 {
-        font-size: 250% !important;
-        text-align: center !important;
+    /* Accordion responsivo */
+    .accordion {
+        width: 100% !important;
     }
 
-    /* Improved Image Responsiveness */
+    .accordion-item {
+        margin-bottom: 10px !important;
+    }
+
+    /* Sistemazione immagini */
     img {
         max-width: 100% !important;
         height: auto !important;
         display: block !important;
-        margin: 0 auto !important;
+        margin: 10px auto !important;
     }
 
-    /* Flexible Layout */
-    .container {
-        width: 95% !important;
-        padding: 0 10px !important;
-        margin: 0 auto !important;
-    }
-
-    .row {
-        display: flex !important;
-        flex-wrap: wrap !important;
+    /* Card layout */
+    .carta {
+        width: 100% !important;
         margin: 10px 0 !important;
     }
 
-    /* Card Improvements */
-    .carta {
-        width: 100% !important;
-        margin-bottom: 20px !important;
-    }
-
-    .imclan {
-        max-height: 120px !important;
-        object-fit: contain !important;
-    }
-
-    /* Dropdown and Navigation */
-    .dropdown {
-        text-align: center !important;
-        padding: 0 !important;
-        margin-bottom: 15px !important;
-    }
-
-    /* Accordion Adjustments */
-    .accordion-button {
-        font-size: 0.9rem !important;
-        padding: 10px !important;
-    }
-
-    /* Footer Responsiveness */
+    /* Footer layout */
     footer .row {
         flex-direction: column !important;
         align-items: center !important;
@@ -141,32 +140,19 @@ h2{
         text-align: center !important;
         margin-bottom: 15px !important;
     }
-
-    /* Language Selection */
-    .pagination {
-        justify-content: center !important;
-        flex-wrap: wrap !important;
-    }
-
-    /* Button Improvements */
-    .btn {
-        width: 100% !important;
-        margin: 10px 0 !important;
-        text-align: center !important;
-    }
 }
 
-/* Small Mobile Devices */
+/* Small screen specifics */
 @media screen and (max-width: 480px) {
-    h1 {
-        font-size: 250% !important;
+    body {
+        font-size: 14px !important;
     }
 
-    h2 {
+    h1 {
         font-size: 200% !important;
     }
 
-    * {
-        font-size: 14px !important;
+    h2 {
+        font-size: 180% !important;
     }
 }
