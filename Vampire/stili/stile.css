@@ -156,3 +156,49 @@ h2{
         font-size: 180% !important;
     }
 }
+@media screen and (max-width: 768px) {
+    /* Prevent horizontal scrolling */
+    body, html {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+
+    /* Card container fix */
+    .carta {
+        width: 90% !important;
+        margin: 10px auto !important;
+        overflow: hidden !important;
+        max-width: 300px !important;
+    }
+
+    /* Accordion specific fixes */
+    .accordion {
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    .accordion-item {
+        width: 100% !important;
+        margin-bottom: 10px !important;
+    }
+
+    .accordion-button {
+        white-space: normal !important;
+        word-wrap: break-word !important;
+    }
+
+    /* Ensure no horizontal overflow */
+    .container {
+        padding-left: 5px !important;
+        padding-right: 5px !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+
+    /* Responsive images inside cards */
+    .carta img {
+        max-width: 100% !important;
+        height: auto !important;
+        object-fit: contain !important;
+    }
+}
