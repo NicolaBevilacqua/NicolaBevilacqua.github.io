@@ -105,14 +105,33 @@ nav ul li a.lang-switch {
   display: block;
 }
 
-/* Container per le coppie di immagine e testo */
 .god-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  max-width: 600px;
-  margin: 20px 0;
+  max-width: 1000px; /* Increased max-width */
+  margin: 40px 0;
+  gap: 40px; /* Add space between text and image */
+}
+
+.god-container .text,
+.god-container .image {
+  width: 48%;
+  flex: 1;
+}
+
+.god-container .image img {
+  width: 100%;
+  height: 400px; /* Consistent image height */
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Alternate image and text positions */
+.god-container:nth-child(even) {
+  flex-direction: row-reverse;
 }
 
 /* Stili per il contenuto */
@@ -153,6 +172,17 @@ nav ul li a.lang-switch {
 }
 
 /* Stili per i titoli */
+.content .text p {
+  line-height: 1.6;
+  color: #333;
+  font-size: 1.1em;
+}
+
+.god-container .text h3 {
+  color: #2c3e50;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 10px;
+}
 h2, h3 {
   font-family: var(--font-family-secondary);
   text-align: center;
@@ -168,9 +198,14 @@ h3 {
   margin-bottom: 10px;
 }
 /* classe per le introduzione*/
-.introduzione
-{
-  text-align: center !important;
+.introduzione {
+  max-width: 800px;
+  margin: 0 auto 40px;
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  font-size: 1.2em;
+  line-height: 1.7;
 }
 /*Gestione delle liste per gli idei*/
 .god-container .text ul
@@ -187,6 +222,7 @@ h3 {
   font-family: var(--font-family-primary) !important;
 }
 
+
 /* Responsive Design Improvements */
 @media (max-width: 1200px) {
   :root {
@@ -197,14 +233,18 @@ h3 {
 
   .god-container {
     flex-direction: column;
-    max-width: 100%;
-    margin: 30px 0;
+    max-width: 90%;
+    margin: 30px auto;
   }
 
-  .content .text,
-  .content .image {
+  .god-container .text,
+  .god-container .image {
     width: 100%;
     text-align: center;
+  }
+
+  .god-container .image img {
+    height: 300px;
   }
 
   .god-container .image,
