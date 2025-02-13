@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Mio Percorso PCTO</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+</head>
+<body>
+    <!-- Barra di navigazione -->
+    <nav>
+        <div class="logo">Il Mio Percorso PCTO</div>
+        <ul>
+            <li><a href="#overview" class="active">Overview</a></li>
+            <li><a href="#esperienze">Esperienze</a></li>
+            <li><a href="#competenze">Competenze</a></li>
+            <li><a href="#statistiche">Statistiche</a></li>
+        </ul>
+        <!-- Controlli tema e colori integrati nella navbar -->
+        <div class="theme-controls">
+            <button class="theme-toggle" aria-label="Cambia tema">
+                <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" style="display: none;">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+            </button>
+            <button class="color-picker-toggle" aria-label="Apri selettore colori">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <circle cx="12" cy="12" r="6"></circle>
+                    <circle cx="12" cy="12" r="2"></circle>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <section id="overview" class="section active">
+        <h2>Il Mio Percorso</h2>
+        <div class="content">
+            <p class="introduzione">Un viaggio attraverso le mie esperienze di PCTO, dove teoria e pratica si incontrano per formare il professionista di domani.</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Ore Totali</h3>
+                    <div class="stat-value">150</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Progetti</h3>
+                    <div class="stat-value">5</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Aziende</h3>
+                    <div class="stat-value">3</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Competenze</h3>
+                    <div class="stat-value">12</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="esperienze" class="section">
+        <h2>Esperienze PCTO</h2>
+        <div class="content">
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="card-image">
+                        <img src="/api/placeholder/800/400" alt="Stage Aziendale">
+                    </div>
+                    <div class="card-content">
+                        <h3>Stage Aziendale Tech</h3>
+                        <div class="card-details">
+                            <span class="period">Giugno - Luglio 2024</span>
+                            <span class="hours">80 ore</span>
+                        </div>
+                        <p>Sviluppo di applicazioni web e mobile presso TechCorp SpA. Ho lavorato su progetti reali utilizzando tecnologie moderne.</p>
+                        <div class="skills-tags">
+                            <span>HTML</span>
+                            <span>CSS</span>
+                            <span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="card-image">
+                        <img src="/api/placeholder/800/400" alt="Corso Formativo">
+                    </div>
+                    <div class="card-content">
+                        <h3>Corso Marketing Digitale</h3>
+                        <div class="card-details">
+                            <span class="period">Marzo - Aprile 2024</span>
+                            <span class="hours">40 ore</span>
+                        </div>
+                        <p>Formazione intensiva sui principi del marketing digitale e social media management.</p>
+                        <div class="skills-tags">
+                            <span>Social Media</span>
+                            <span>SEO</span>
+                            <span>Content Creation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="competenze" class="section">
+        <h2>Competenze Acquisite</h2>
+        <div class="content">
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>Competenze Tecniche</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Web Development</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Digital Marketing</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="skill-list">
+                        <div class="skill-item">
+                            <span class="skill-name">Teamwork</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Problem Solving</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="statistiche" class="section">
+        <h2>Statistiche e Risultati</h2>
+        <div class="content">
+            <div class="statistics-container">
+                <div class="chart-container">
+                    <h3>Distribuzione Ore per Area</h3>
+                    <canvas id="distributionChart"></canvas>
+                    <div class="chart-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: var(--chart-color-1)"></div>
+                            <span>Sviluppo Web</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: var(--chart-color-2)"></div>
+                            <span>Marketing Digitale</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: var(--chart-color-3)"></div>
+                            <span>Design</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: var(--chart-color-4)"></div>
+                            <span>Project Management</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="achievements-list">
+                    <h3>Obiettivi Raggiunti</h3>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">🎯</div>
+                        <div class="achievement-details">
+                            <h4>Progetto Completato</h4>
+                            <p>Sviluppo di un'applicazione web funzionante</p>
+                        </div>
+                    </div>
+                    <div class="achievement-item">
+                        <div class="achievement-icon">🏆</div>
+                        <div class="achievement-details">
+                            <h4>Certificazione</h4>
+                            <p>Conseguimento certificazione marketing digitale</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="../image/logo.png" alt="Logo" class="footer-logo">
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2024 Il Mio Percorso PCTO</p>
+                <p>Creato da Nicola Bevilacqua</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
