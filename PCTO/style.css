@@ -144,7 +144,7 @@ nav ul li a.active {
 /* Menu selettore colori */
 .color-picker-menu {
     position: fixed;
-    top: 70px; /* Posizionato sotto la navbar */
+    top: 70px;
     right: -300px;
     width: 300px;
     background: var(--card-background);
@@ -552,16 +552,22 @@ footer {
     }
 
     /* Color Picker Menu */
+
     .color-picker-menu {
         position: fixed;
-        top: 100px; /* Aggiustato per evitare sovrapposizioni con la navbar */
-        right: 1rem;
+        top: 100px;
+        right: -100%; 
         width: calc(100% - 2rem);
         max-width: 300px;
         background: var(--card-background);
         border-radius: var(--border-radius);
         box-shadow: var(--card-shadow);
         z-index: 1000;
+        transition: right 0.3s ease-in-out;
+    }
+
+    .color-picker-menu.active {
+        right: 1rem;
     }
 
     .color-button {
