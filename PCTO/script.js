@@ -274,3 +274,100 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeCharts();
     updateActiveSection();
 });
+document.addEventListener('DOMContentLoaded', function() {
+    // Cache DOM elements
+    const sections = document.querySelectorAll('.section');
+    const navLinks = document.querySelectorAll('nav ul li a');
+    const nav = document.querySelector('nav');
+    
+    // Funzione per gestire il cambio di sezione
+    function handleSectionChange(targetId) {
+        // Rimuove la classe active da tutte le sezioni e link
+        sections.forEach(section => section.classList.remove('active'));
+        navLinks.forEach(link => link.classList.remove('active'));
+        
+        // Aggiunge la classe active alla sezione target e al link corrispondente
+        const targetSection = document.getElementById(targetId);
+        const targetLink = document.querySelector(`nav ul li a[href="#${targetId}"]`);
+        
+        if (targetSection && targetLink) {
+            targetSection.classList.add('active');
+            targetLink.classList.add('active');
+            
+            // Scroll smooth alla sezione
+            const navHeight = nav.offsetHeight;
+            const targetPosition = targetSection.offsetTop - navHeight;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+
+            // Centro il link attivo nella navbar su mobile
+            if (window.innerWidth <= 768) {
+                const navList = document.querySelector('nav ul');
+                const linkRect = targetLink.getBoundingClientRect();
+                const listRect = navList.getBoundingClientRect();
+                
+                navList.scrollTo({
+                    left: linkRect.left - listRect.left - (listRect.width - linkRect.width) / 2,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    }
+    
+    // Event listener per i link della navigazione
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            handleSectionChange(targetId);
+        });
+    });
+    
+    // Gestione dello scroll e dell'intersezione delle sezioni
+    const observerOptions = {
+        root: null,
+        rootMargin: '-50% 0px',
+        threshold: 0
+    };
+    
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const targetId = entry.target.id;
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === `#${targetId}`) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+    
+    sections.forEach(section => sectionObserver.observe(section));
+    
+    // Gestione dello scroll iniziale se c'è un hash nell'URL
+    if (window.location.hash) {
+        const targetId = window.location.hash.substring(1);
+        handleSectionChange(targetId);
+    } else {
+        // Attiva la prima sezione di default
+        handleSectionChange(sections[0].id);
+    }
+    
+    // Gestione del resize della finestra
+    let resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            const activeSection = document.querySelector('.section.active');
+            if (activeSection) {
+                handleSectionChange(activeSection.id);
+            }
+        }, 250);
+    });
+});
