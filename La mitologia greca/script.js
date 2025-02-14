@@ -1,32 +1,81 @@
+let isDarkTheme = false;
+let currentTitleColor = '#333';
 document.addEventListener('DOMContentLoaded', function () {
   // Navigation and Section Management
   const sections = document.querySelectorAll('.section');
   const navLinks = document.querySelectorAll('nav ul li a');
   const wrapper = document.querySelector('.wrapper');
+  
+  // Theme toggle button
+  const themeToggle = document.createElement('button');
+  themeToggle.id = 'theme-toggle';
+  themeToggle.innerHTML = '🌙';
+  themeToggle.className = 'theme-toggle';
+  document.body.appendChild(themeToggle);
+
+  // Color menu
+  const colorMenu = document.createElement('div');
+  colorMenu.className = 'color-menu';
+  colorMenu.innerHTML = `
+    <button class="color-toggle">🎨</button>
+    <div class="color-options">
+      <button style="background: #333" data-color="#333"></button>
+      <button style="background: #E247" data-color="#E247"></button>
+      <button style="background: #2c3e50" data-color="#2c3e50"></button>
+      <button style="background: #8e44ad" data-color="#8e44ad"></button>
+    </div>
+  `;
+  document.body.appendChild(colorMenu);
+
+  // Theme toggle functionality
+  themeToggle.addEventListener('click', function() {
+    isDarkTheme = !isDarkTheme;
+    document.body.classList.toggle('dark-theme');
+    themeToggle.innerHTML = isDarkTheme ? '☀️' : '🌙';
+  });
+
+  // Color menu functionality
+  const colorToggle = document.querySelector('.color-toggle');
+  const colorOptions = document.querySelector('.color-options');
+
+  colorToggle.addEventListener('click', function() {
+    colorOptions.classList.toggle('show');
+  });
+
+  document.querySelectorAll('.color-options button').forEach(button => {
+    button.addEventListener('click', function() {
+      const color = this.getAttribute('data-color');
+      document.querySelectorAll('h2, h3, nav .logo, nav ul li a').forEach(element => {
+        element.style.color = color;
+      });
+      currentTitleColor = color;
+      colorOptions.classList.remove('show');
+    });
+  });
+
+  // Close color menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!colorMenu.contains(e.target)) {
+      colorOptions.classList.remove('show');
+    }
+  });
+
 
   // Enhanced navigation handler
   function handleNavigation(e) {
     const href = this.getAttribute('href');
-
     if (href.startsWith('#')) {
       e.preventDefault();
-      
-      // Remove active class from all sections and links
       sections.forEach(section => section.classList.remove('active'));
       navLinks.forEach(link => link.classList.remove('active'));
-
-      // Add active class to target section and link
       const targetId = href.substring(1);
       const targetSection = document.getElementById(targetId);
       targetSection.classList.add('active');
       this.classList.add('active');
-
-      // Smooth scroll to section
       targetSection.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
-  // Attach navigation event listeners
   navLinks.forEach(link => {
     link.addEventListener('click', handleNavigation);
   });
