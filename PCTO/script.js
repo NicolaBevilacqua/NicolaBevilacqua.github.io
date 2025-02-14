@@ -273,12 +273,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeSkillBars();
     initializeCharts();
     updateActiveSection();
-});
-document.addEventListener('DOMContentLoaded', function() {
-    // Cache DOM elements
-    const sections = document.querySelectorAll('.section');
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const nav = document.querySelector('nav');
+
     
     // Funzione per gestire il cambio di sezione
     function handleSectionChange(targetId) {
