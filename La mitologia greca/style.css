@@ -33,7 +33,7 @@ nav {
   left: 0;
   width: 100%;
   height: var(--nav-height);
-  padding: 0 5%;
+  padding: 0;
   background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(221, 221, 221, 0.5);
@@ -47,7 +47,7 @@ nav.black {
 }
 
 nav .logo {
-  padding: 15px 0;
+  padding: 15px 5%;
   height: var(--nav-height);
   float: left;
   font-size: 1.5rem;
@@ -85,7 +85,11 @@ nav ul li a:focus {
 }
 
 nav ul li a.lang-switch {
-  padding: 12px 10px;
+  padding: 8px 12px;
+}
+
+nav ul li a.lang-switch:hover {
+  background: var(--secondary-color);
 }
 
 /* Stili per le sezioni */
@@ -397,22 +401,69 @@ h3 {
 @media (max-width: 768px) {
   .theme-toggle,
   .color-toggle {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
   }
-
-  .color-options {
-    left: 50%;
-    transform: translateX(-50%);
-    flex-direction: row;
-    bottom: 70px;
+  
+  .color-menu {
+    bottom: 80px;
+  }
+  
+  .theme-toggle {
+    bottom: 20px;
   }
 }
 
 @media (max-width: 600px) {
+  nav {
+    position: fixed;
+    padding: 0;
+    height: auto;
+  }
+  
   nav .logo {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    padding: 15px 0;
+    width: 100%;
+    text-align: center;
+  }
+  
+  nav ul {
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  nav ul li {
+    display: block;
+    width: 100%;
+  }
+  
+  nav ul li a {
+    display: block;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+  nav ul li {
+    width: auto;
+  }
+  
+  nav ul li a.lang-switch {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: var(--primary-color);
+    color: white;
+    padding: 8px 12px;
+    border-radius: var(--border-radius);
+    z-index: 1001;
+  }
+  
+  .section {
+    padding-top: 200px; /* Aumenta il padding per compensare l'altezza maggiore della navbar */
   }
   
   .god-container {
@@ -424,17 +475,26 @@ h3 {
     max-height: 300px;
   }
   
+  body {
+    font-size: 16px; /* Base font size */
+  }
+  
   .introduzione {
     font-size: 1.1em;
-    padding: 0 15px;
+    line-height: 1.6;
+  }
+  
+  .god-container .text p {
+    font-size: 1em;
+    line-height: 1.5;
   }
   
   h2 {
-    font-size: 2em;
+    font-size: 1.8em;
   }
   
   h3 {
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
 }
 

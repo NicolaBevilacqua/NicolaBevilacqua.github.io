@@ -1,5 +1,5 @@
-let isDarkTheme = false;
-let currentTitleColor = '#333';
+let isDarkTheme = localStorage.getItem('isDarkTheme') === 'true';
+let currentTitleColor = localStorage.getItem('titleColor') || '#333';
 document.addEventListener('DOMContentLoaded', function () {
   // Navigation and Section Management
   const sections = document.querySelectorAll('.section');
@@ -31,8 +31,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // Theme toggle functionality
   themeToggle.addEventListener('click', function() {
     isDarkTheme = !isDarkTheme;
-    document.body.classList.toggle('dark-theme');
+    document.body.classList.toggle('dark-theme', isDarkTheme);
     themeToggle.innerHTML = isDarkTheme ? '☀️' : '🌙';
+    localStorage.setItem('isDarkTheme', isDarkTheme);
   });
 
   // Color menu functionality
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
         element.style.color = color;
       });
       currentTitleColor = color;
+      localStorage.setItem('titleColor', color);
       colorOptions.classList.remove('show');
     });
   });
@@ -58,6 +60,21 @@ document.addEventListener('DOMContentLoaded', function () {
   document.addEventListener('click', function(e) {
     if (!colorMenu.contains(e.target)) {
       colorOptions.classList.remove('show');
+    }
+  });
+
+  document.addEventListener('DOMContentLoaded', function() {
+    // Applica tema salvato
+    if (isDarkTheme) {
+      document.body.classList.add('dark-theme');
+      themeToggle.innerHTML = '☀️';
+    }
+    
+    // Applica colore titoli salvato
+    if (currentTitleColor) {
+      document.querySelectorAll('h2, h3, nav .logo').forEach(element => {
+        element.style.color = currentTitleColor;
+      });
     }
   });
 
