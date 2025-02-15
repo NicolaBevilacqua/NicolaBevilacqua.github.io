@@ -1,78 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
-		<title>Radio ITIGEO</title>
-		<link rel="icon" type="image/png" href="logo.png"> <!-- Inserimento della favicon vicino al titolo -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">	<!-- Integrazione CSS Bootstrap -->
-		<link rel="stylesheet" href="stile.css" > <!-- Inserire al posto di mystyle.css il nome del file del proprio CSS -->
-	</head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Radio ITIGEO</title>
+        <link rel="icon" type="image/png" href="Logo.png">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+        <link rel="stylesheet" href="stile.css">
+    </head>
     <body>
-        <header>
-            <h1>Radio ITIGEO</h1>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="Logo.png" alt="Logo Radio ITIGEO" height="60" class="d-inline-block align-text-center me-2">
+                    Radio ITIGEO
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown me-2">
+                            <button class="btn dropdown-toggle" type="button" id="colorDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-palette"></i> Title Colors
+                            </button>
+                            <ul class="dropdown-menu color-menu" aria-labelledby="colorDropdown">
+                                <li><a class="dropdown-item" href="#" data-color="#FF5733">Red</a></li>
+                                <li><a class="dropdown-item" href="#" data-color="#33FF57">Green</a></li>
+                                <li><a class="dropdown-item" href="#" data-color="#3357FF">Blue</a></li>
+                                <li><a class="dropdown-item" href="#" data-color="#F3FF33">Yellow</a></li>
+                                <li><a class="dropdown-item" href="#" data-color="#FF33F3">Purple</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <button id="theme-toggle" class="btn">
+                                <i class="fas fa-moon"></i>
+                            </button>
+                        </li>
+                        <li class="nav-item ms-2">
+                            <a class="nav-link" href="radio.html">
+                                <img src="ita.png" alt="Italian flag" height="24" class="d-inline-block align-text-center">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <header class="container-fluid text-center my-4">
+            <h1 class="display-3">Radio ITIGEO</h1>
         </header>
-        <main>
-            <div class="containers">
-                <div class="row">
-                    <div class="col">
-                        <h3>Illustration of the project</h3>
+        
+        <main class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-10">
+                    <div class="card bg-glass">
+                        <div class="card-body">
+                            <h3 class="title card-title text-center mb-4">Illustration of the project</h3>
+                            <div class="row align-items-center">
+                                <div class="col-md-8">
+                                    <p>The activity concerns the production of content (news reports, activity reports, in-depth analysis on current or study topics, interviews with personalities from the world of culture, work, the national and international star set, politics) to be published and disseminate on the institute web radio "Radio ITIGEO".
+                                        The students will animate a journalistic editorial team and write the articles, which they will then record in the radio studios, processing them using specific audio software (audacity) and publishing them on the reference site.
+                                        Live broadcasts allow teachers and students a creative and interactive approach with the users who participate in the broadcasts. After a long period of planning the episode, the broadcast will require advertising and dissemination activities, voice-over and technical direction.
+                                        The project aims to improve students' written and oral production, to develop a sense of active and aware citizenship and to increase the sense of belonging to the school.
+                                        The radio is also a useful tool for connecting students with the working reality of our territory, a bridge for orientation towards the world of work, according to the ministerial indications of Scuola Futura. A particular advantage of this extraordinary means of communication is its inclusiveness. Many of the protagonists, including speakers and technical directors, are children with specific learning disabilities who develop and enhance their written and oral skills.</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="text-center">
+                                        <img src="Logo.png" alt="logo Radio" title="Logo Radio" class="img-fluid logo-animation">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-8">
-                        <p>The activity concerns the production of content (news reports, activity reports, in-depth analysis on current or study topics, interviews with personalities from the world of culture, work, the national and international star set, politics) to be published and disseminate on the institute web radio “Radio ITIGEO”.
-                            The students will animate a journalistic editorial team and write the articles, which they will then record in the radio studios, processing them using specific audio software (audacity) and publishing them on the reference site.
-                            Live broadcasts allow teachers and students a creative and interactive approach with the users who participate in the broadcasts. After a long period of planning the episode, the broadcast will require advertising and dissemination activities, voice-over and technical direction.
-                            The project aims to improve students' written and oral production, to develop a sense of active and aware citizenship and to increase the sense of belonging to the school.
-                            The radio is also a useful tool for connecting students with the working reality of our territory, a bridge for orientation towards the world of work, according to the ministerial indications of Scuola Futura. A particular advantage of this extraordinary means of communication is its inclusiveness. Many of the protagonists, including speakers and technical directors, are children with specific learning disabilities who develop and enhance their written and oral skills.</p>
-                    </div>
-                    <div class="col-4">
-                        <center>
-                            <img src="logo.png" alt="logo Radio" title="Logo Radio">
-                        </center>
+            </div>
+            
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-10">
+                    <div class="card bg-glass">
+                        <div class="card-body">
+                            <h3 class="title card-title text-center mb-4">Our headquarters</h3>
+                            <div class="row align-items-center">
+                                <div class="col-md-6">
+                                    <div class="video-container mb-3 mb-md-0">
+                                        <video controls class="w-100 rounded">
+                                            <source src="Sede Radio.mp4" type="video/mp4">
+                                        </video>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <p>This, shown alongside, is this year's radio venue which has had dramatic improvements, including absorbent foam panels on the walls. Here our episodes are broadcast, managed by us students with the help of the teachers. The venue has many defects, but this is normal for an institute radio. However, the feeling of being here, both to broadcast something you wrote and thought of, and to be behind the control room managing microphones and audio, is a wonderful emotion. Even if it is not appreciated enough among students, among school projects I consider it one of the best.</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
-                        <h3>Our headquarters</h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <video controls>
-                            <source src="Sede Radio.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="col-6">
-                        <p>This, shown alongside, is this year's radio venue which has had dramatic improvements, including absorbent foam panels on the walls. Here our episodes are broadcast, managed by us students with the help of the teachers. The venue has many defects, but this is normal for an institute radio. However, the feeling of being here, both to broadcast something you wrote and thought of, and to be behind the control room managing microphones and audio, is a wonderful emotion. Even if it is not appreciated enough among students, among school projects I consider it one of the best.</p>
+            </div>
+
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-10">
+                    <div class="card bg-glass">
+                        <div class="card-body">
+                            <h3 class="title card-title text-center mb-4">Our Episodes</h3>
+                            
+                            <!-- Episode 1 -->
+                            <div class="episode-container mb-4">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-md-4">
+                                        <img src="felicita.png" alt="We love happines" class="img-fluid poster-image rounded">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h4 class="title card-title">We love happines</h4>
+                                            <p class="card-text">What does it really mean to be happy? In this episode we explore the concept of happiness through philosophy, science and life experiences. From the pursuit of immediate pleasure to the construction of lasting well-being, we will reflect on what really makes us happy. With testimonials, food for thought and good music, we will take you on a journey to discover happiness in its many forms.</p>
+                                            <div class="audio-player">
+                                                <audio controls class="w-100">
+                                                    <source src="we_love_happiness.mp3" type="audio/mpeg">
+                                                </audio>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Episode 2 -->
+                            <div class="episode-container">
+                                <div class="row g-0 align-items-center">
+                                    <div class="col-md-4">
+                                        <img src="Power Up.jpeg" alt="Power Up Cyborg" class="img-fluid poster-image rounded">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h4 class="title card-title">Power up cyborg</h4>
+                                            <p class="card-text">The boundaries between human and artificial are becoming increasingly blurred. In this episode we explore the world of cyborgs: from advanced prosthetics to the fusion of mind and technology, to the ethical implications of a future in which humans will be able to enhance their bodies without limits. Are we ready to become more machine than flesh?</p>
+                                            <div class="audio-player">
+                                                <audio controls class="w-100">
+                                                    <source src="power_up_cyborg.mp3" type="audio/mpeg">
+                                                    Your browser does not support the audio element.
+                                                </audio>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </main>
-        <footer>
-			<div class="container">
-                <div class="row" style="margin-top:2%">
-                   <div class="col-9">
-                      <center><img src="../image/logo.png" height="200px" width="200px"/></center>
-                   </div>
-                   <div class="col-3">
-                      <nav aria-label="Lingua selezionata">
-                         <ul class="pagination pagination-lg">
-                            <li class="page-item active" aria-current="page"  >
-                               <a class="page-link" href="radioing.html">
-                               <img src="ing.png" alt="English flag" title="English flag" height="30px"/>
-                               </a>
-                            </li>
-                            <li class="page-item">
-                               <a class="page-link" href="radio.html" >
-                               <img src="ita.png" alt="Italian flag" title="Italian flag" height="30px"/>
-                               </a>
-                            </li>
-                         </ul>
-                      </nav>
-                   </div>
-                </div>
-             </div>
-		</footer>
+        
+        <footer class="mt-auto py-4">
+            <div class="container text-center">
+                <img src="../image/logo.png" height="100" alt="Logo ITIGEO" class="img-fluid mb-3" style="max-height: 100px;">
+                <p class="mb-0">&copy; 2024 Radio ITIGEO & Nicola Bevilacqua - All rights reserved</p>
+            </div>
+        </footer>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="script.js"></script>
     </body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> <!-- Integrazione Javascript Bootstrap -->
 </html>

@@ -1,6 +1,6 @@
 /* Variabili CSS per i colori e le dimensioni */
 :root {
-  --primary-color: #E247;
+  --primary-color: #890000;
   --secondary-color: #333;
   --background-color: #f5f5f5;
   --font-family-primary: 'Quicksand', sans-serif;
@@ -326,7 +326,6 @@ h3 {
   color: #cccccc;
 }
 
-/* Fix text visibility in dark theme */
 .dark-theme .god-container .text p,
 .dark-theme .god-container .text ul li p {
   color: #ffffff;

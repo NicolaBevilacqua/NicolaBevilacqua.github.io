@@ -19,10 +19,11 @@ document.addEventListener('DOMContentLoaded', function () {
   colorMenu.innerHTML = `
     <button class="color-toggle">🎨</button>
     <div class="color-options">
-      <button style="background: #333" data-color="#333"></button>
-      <button style="background: #E247" data-color="#E247"></button>
-      <button style="background: #2c3e50" data-color="#2c3e50"></button>
-      <button style="background: #8e44ad" data-color="#8e44ad"></button>
+      <button style="background: #ec1839" data-color="#ec1839"></button>
+      <button style="background: #fa5b0f" data-color="#fa5b0f"></button>
+      <button style="background: #37b182" data-color="#37b182"></button>
+      <button style="background: #1854b4" data-color="#1854b4"></button>
+      <button style="background: #f021b2" data-color="#f021b2"></button>
     </div>
   `;
   document.body.appendChild(colorMenu);
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.color-options button').forEach(button => {
     button.addEventListener('click', function() {
       const color = this.getAttribute('data-color');
-      document.querySelectorAll('h2, h3, nav .logo, nav ul li a').forEach(element => {
+      document.querySelectorAll('h2, h3, nav .logo').forEach(element => {
         element.style.color = color;
       });
       currentTitleColor = color;

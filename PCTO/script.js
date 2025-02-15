@@ -14,19 +14,19 @@ document.addEventListener('DOMContentLoaded', function () {
             <div class="color-option">
                 <h4>Colore Primario</h4>
                 <div class="color-buttons primary-colors">
-                    <button class="color-button" style="background: #2c3e50" data-color="#2c3e50" data-variable="--primary-color"></button>
-                    <button class="color-button" style="background: #3498db" data-color="#3498db" data-variable="--primary-color"></button>
-                    <button class="color-button" style="background: #e74c3c" data-color="#e74c3c" data-variable="--primary-color"></button>
-                    <button class="color-button" style="background: #2ecc71" data-color="#2ecc71" data-variable="--primary-color"></button>
+                    <button class="color-button" style="background: #1854b4" data-color="#1854b4" data-variable="--primary-color"></button>
+                    <button class="color-button" style="background: #ec1839" data-color="#ec1839" data-variable="--primary-color"></button>
+                    <button class="color-button" style="background: #fa5b0f" data-color="#fa5b0f" data-variable="--primary-color"></button>
+                    <button class="color-button" style="background: #37b182" data-color="#37b182" data-variable="--primary-color"></button>
                 </div>
             </div>
             <div class="color-option">
                 <h4>Colore Accento</h4>
                 <div class="color-buttons accent-colors">
-                    <button class="color-button" style="background: #3498db" data-color="#3498db" data-variable="--accent-color"></button>
-                    <button class="color-button" style="background: #e74c3c" data-color="#e74c3c" data-variable="--accent-color"></button>
-                    <button class="color-button" style="background: #f1c40f" data-color="#f1c40f" data-variable="--accent-color"></button>
-                    <button class="color-button" style="background: #9b59b6" data-color="#9b59b6" data-variable="--accent-color"></button>
+                    <button class="color-button" style="background: #1854b4" data-color="#1854b4" data-variable="--accent-color"></button>
+                    <button class="color-button" style="background: #ec1839" data-color="#ec1839" data-variable="--accent-color"></button>
+                    <button class="color-button" style="background: #fa5b0f" data-color="#fa5b0f" data-variable="--accent-color"></button>
+                    <button class="color-button" style="background: #37b182" data-color="#37b182" data-variable="--accent-color"></button>
                 </div>
             </div>
         `;
