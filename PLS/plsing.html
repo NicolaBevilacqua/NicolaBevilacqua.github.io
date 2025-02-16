@@ -1,62 +1,98 @@
 <!DOCTYPE html>
-<html>
-    <head>
-		<title>PLS</title>
-		<link rel="icon" type="image/png" href="logo.png"> <!-- Inserimento della favicon vicino al titolo -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">	<!-- Integrazione CSS Bootstrap -->
-		<link rel="stylesheet" href="stile.css" > <!-- Inserire al posto di mystyle.css il nome del file del proprio CSS -->
-	</head>
-    <body>
-        <header>
-            <h1>Science degrees project</h1>
-        </header>
-        <main>
-            <div class="containers">
-                <div class="row">
-                    <div class="col">
-                        <h3>Illustration of the project</h3>
+<html lang="it">
+<head>
+    <title>PLS - Scientific Degrees Project</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="Logo.jpg">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="stile.css">
+</head>
+<body>
+    <div class="control-buttons">
+        <button class="control-button" id="themeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+        <button class="control-button" id="colorToggle">
+            <i class="fas fa-palette"></i>
+        </button>
+        <div class="color-picker" id="colorPicker">
+            <button class="color-button white" data-color="white">White</button>
+            <button class="color-button gold" data-color="#ffd700">Gold</button>
+            <button class="color-button cyan" data-color="#00ffff">Cyan</button>
+        </div>
+    </div>
+</div>
+
+    <header class="site-header">
+        <div class="container">
+            <h1 class="text-center">Scientific Degrees Project</h1>
+        </div>
+    </header>
+
+    <main>
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="section-title">Illustration of the Project</h3>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-8">
+                    <div class="content-box">
+                        <p>The ‘Scientific Degrees’ project in cooperation with the University of Potenza focuses on the application of graph concepts in various scientific fields. During my collaboration with the project, I took care of the graphic part of the presentation, creating engaging and informative visual representations of graph concepts.</p>
+                        
+                        <div class="video-container mt-4">
+                            <iframe src="presentazione.mp4" frameborder="0" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-8">
-                        <p>The "Scientific Degrees" project in collaboration with the University of Potenza focuses on the application of graph concepts in various scientific fields. During my collaboration with the project, I took care of the graphical part of the presentation, creating engaging and informative visual representations of graph concepts.
-                            The presentation is designed to clearly and captivatingly illustrate the properties and algorithms of graphs, as well as their applications in practical contexts. Using colors, shapes, and diagrams, I worked to convey complex concepts in an accessible way, allowing audiences to easily understand the potential and implications of graphs in science.
-                            Graphical representations have included detailed diagrams of graphs and subgraphs, dynamic visualizations of search algorithms and paths, as well as examples of graph applications in optimization problems, social networks, transportation, and more.
-                            My attention to the graphical portion of the presentation helped make the educational material engaging and easy to understand, providing viewers with a solid foundation to further explore the world of graphs and their scientific applications.</p>
-                    </div>
-                    <div class="col-4">
-                        <center>
-                            <img src="logo.png" alt="Grafo by Petersen" title="Grafo by Petersen">
-                        </center>
+                <div class="col-md-4">
+                    <div class="logo-container">
+                        <img src="Logo.jpg" alt="Logo del progetto" title="Project logo" class="img-fluid project-logo">
                     </div>
                 </div>
             </div>
-        </main>
-        <footer>
-			<div class="container">
-                <div class="row" style="margin-top:2%">
-                   <div class="col-9">
-                      <center><img src="../image/logo.png" height="300px" width="300px"/></center>
-                   </div>
-                   <div class="col-3">
-                      <nav aria-label="Lingua selezionata">
-                         <ul class="pagination pagination-lg">
-                            <li class="page-item active" aria-current="page"  >
-                               <a class="page-link" href="plsing.html">
-                               <img src="ing.png" alt="English flag" title="English flag" height="30px"/>
-                               </a>
-                            </li>
-                            <li class="page-item">
-                               <a class="page-link" href="pls.html" >
-                               <img src="ita.png" alt="Italian flag" title="Italian flag" height="30px"/>
-                               </a>
-                            </li>
-                         </ul>
-                      </nav>
-                   </div>
+
+            <div class="institutional-logos mt-5">
+                <h4 class="text-center mb-4">Partner Istituzionali</h4>
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <img src="logoUnibas.webp" style="background-color: white; border-radius: 30%;" alt="University of Basilicata" class="img-fluid institution-logo">
+                    </div>
+                    <div class="col-md-3 col-sm-6 mb-4">
+                        <img src="LogoScuola.png" style="background-color: white; border-radius: 25%;" alt="I.T.I.S Eistein De Lorenzo " class="img-fluid institution-logo">
+                    </div>
                 </div>
-             </div>
-		</footer>
-    </body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> <!-- Integrazione Javascript Bootstrap -->
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="../image/logo.png" class="img-fluid footer-logo" alt="Logo footer">
+                </div>
+                <div class="col-md-6">
+                    <div class="language-switcher">
+                        <a href="plsing.html" class="language-btn active">
+                            <img src="ing.png" alt="English flag" title="English">
+                            <span>English</span>
+                        </a>
+                        <a href="pls.html" class="language-btn ">
+                            <img src="ita.png" alt="Italian flag" title="Italiano">
+                            <span>Italiano</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>
