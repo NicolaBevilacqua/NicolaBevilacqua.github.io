@@ -1,68 +1,318 @@
+/* Font Declarations */
 @font-face {
     font-family: 'deutsch_gothicnormal';
-    src: url('Deutsch-webfont.eot');
-    src: url('Deutsch-webfont.eot?#iefix') format('embedded-opentype'),
-         url('Deutsch-webfont.woff2') format('woff2'),
-         url('Deutsch-webfont.woff') format('woff'),
-         url('Deutsch-webfont.ttf') format('truetype'),
-         url('Deutsch-webfont.svg#deutsch_gothicnormal') format('svg');
+    src: url('../stili/Deutsch-webfont.eot');
+    src: url('../stili/Deutsch-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../stili/Deutsch-webfont.woff2') format('woff2'),
+         url('../stili/Deutsch-webfont.woff') format('woff'),
+         url('../stili/Deutsch-webfont.ttf') format('truetype'),
+         url('../stili/Deutsch-webfont.svg#deutsch_gothicnormal') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
+
 @font-face {
     font-family: 'chanticleerromanregular';
-    src: url('CHANTICL-webfont.eot');
-    src: url('CHANTICL-webfont.eot?#iefix') format('embedded-opentype'),
-         url('CHANTICL-webfont.woff2') format('woff2'),
-         url('CHANTICL-webfont.woff') format('woff'),
-         url('CHANTICL-webfont.ttf') format('truetype'),
-         url('CHANTICL-webfont.svg#chanticleerromanregular') format('svg');
+    src: url('../stili/CHANTICL-webfont.eot');
+    src: url('../stili/CHANTICL-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../stili/CHANTICL-webfont.woff2') format('woff2'),
+         url('../stili/CHANTICL-webfont.woff') format('woff'),
+         url('../stili/CHANTICL-webfont.ttf') format('truetype'),
+         url('../stili/CHANTICL-webfont.svg#chanticleerromanregular') format('svg');
     font-weight: normal;
     font-style: normal;
 }
-*{
-	font-family: chanticleerromanregular;
-	color:white;
+
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'chanticleerromanregular', serif;
+    color: white;
 }
-.sfondo{
-	background-image: url('home.png');
-	background-repeat: no-repeat;
-	background-attachment:fixed;
-	background-size:100% 100%;
+
+/* Base Styles */
+body {
+    background-image: url('../stili/home.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-x: hidden;
 }
-body{
-  background-image: linear-gradient(to top right ,#ff8080,#ff3333,#e60000,#b30000,#800000,#4d0000,#660000,black);
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(to top right, rgba(255, 128, 128, 0.7), rgba(255, 51, 51, 0.7), 
+                      rgba(230, 0, 0, 0.7), rgba(179, 0, 0, 0.7), rgba(128, 0, 0, 0.7), 
+                      rgba(77, 0, 0, 0.7), rgba(102, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+    z-index: -1;
 }
-.carta{
-	background-image: linear-gradient(to top left,black,#191919,#333333,#666666,#999999,#cccccc,white);
-	color: #090908;
-	padding:7%;
+
+/* Main Container Styles */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
 }
-li{
-	color: #ff0000;
+
+/* Logo Container */
+.logo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
 }
-h1{
-	font-family:deutsch_gothicnormal;
-	color: #bbbcbb;
-	font-size:500%;
-	text-align:center;
-	margin-top:2%;
+
+.main-title {
+    width: 100%;
+    max-width: 800px;
+    filter: drop-shadow(0 0 10px rgba(255, 0, 0, 0.5));
+    transition: transform 0.5s ease;
 }
-h3{
-	color: white;
+
+.main-title:hover {
+    transform: scale(1.02);
 }
-h2{
-	font-family:deutsch_gothicnormal;
-	color: #bbbcbb;
-	font-size:400%;
-	text-align:center;
+
+/* Button Styles */
+.button-container {
+    text-align: center;
+    margin: 3rem 0;
 }
-.tclan{
-	font-family:deutsch_gothicnormal;
+
+.btn-explore {
+    display: inline-block;
+    background-color: rgba(170, 0, 0, 0.8);
+    color: white;
+    padding: 15px 40px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid #660000;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+    position: relative;
+    overflow: hidden;
 }
-.imclan{
-	min-height:200px;
-	max-height:150px;
-	width:auto;
+
+.btn-explore::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: 0.5s;
+}
+
+.btn-explore:hover {
+    background-color: rgba(200, 0, 0, 0.9);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(255, 0, 0, 0.7);
+}
+
+.btn-explore:hover::before {
+    left: 100%;
+}
+
+.btn-text {
+    font-family: 'deutsch_gothicnormal', sans-serif;
+    font-size: 2.5rem;
+    color: #f1f1f1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Footer Styles */
+footer {
+    margin-top: auto;
+    padding: 20px 0;
+    width: 100%;
+    border-top: 1px solid rgba(255, 0, 0, 0.3);
+}
+
+.footer-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.credits-section, .logo-section, .language-section {
+    padding: 10px;
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.credits-section {
+    justify-content: flex-start;
+}
+
+.language-section {
+    justify-content: flex-end;
+}
+
+.btn-credits {
+    display: inline-block;
+    background-color: rgba(170, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #660000;
+    transition: all 0.3s ease;
+}
+
+.btn-credits:hover {
+    background-color: rgba(200, 0, 0, 0.9);
+    transform: translateY(-3px);
+    box-shadow: 0 3px 10px rgba(255, 0, 0, 0.5);
+}
+
+.footer-logo {
+    max-width: 120px;
+    height: auto;
+    transition: transform 0.5s ease;
+}
+
+.footer-logo:hover {
+    transform: rotate(360deg);
+}
+
+/* Language Selector */
+.language-list {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+}
+
+.language-item {
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.language-item img {
+    display: block;
+    height: 30px;
+    width: auto;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.language-item:hover img {
+    transform: scale(1.1);
+}
+
+.language-item.active img {
+    border: 1px solid white;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+/* Carta styles (from original CSS) */
+.carta {
+    background-image: linear-gradient(to top left, black, #191919, #333333, #666666, #999999, #cccccc, white);
+    color: #090908;
+    padding: 7%;
+}
+
+/* Typography */
+h1 {
+    font-family: 'deutsch_gothicnormal';
+    color: #bbbcbb;
+    font-size: 500%;
+    text-align: center;
+    margin-top: 2%;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+}
+
+h2 {
+    font-family: 'deutsch_gothicnormal';
+    color: #bbbcbb;
+    font-size: 400%;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+h3 {
+    color: white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+}
+
+/* Clan specific classes */
+.tclan {
+    font-family: 'deutsch_gothicnormal';
+}
+
+.imclan {
+    min-height: 200px;
+    max-height: 150px;
+    width: auto;
+}
+
+/* Blood spatter animation effect */
+@keyframes bloodDrip {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Responsive Media Queries */
+@media screen and (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+    
+    .credits-section, .language-section {
+        justify-content: center;
+    }
+    
+    .btn-text {
+        font-size: 2rem;
+    }
+    
+    h1 {
+        font-size: 400%;
+    }
+    
+    h2 {
+        font-size: 300%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .btn-text {
+        font-size: 1.5rem;
+    }
+    
+    h1 {
+        font-size: 300%;
+    }
+    
+    h2 {
+        font-size: 250%;
+    }
 }

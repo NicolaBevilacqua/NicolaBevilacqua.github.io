@@ -10,13 +10,15 @@
         <link rel="stylesheet" href="stile.css">
     </head>
     <body>
+        <!-- Preloader generato da JavaScript -->
+        
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="#">
                     <img src="Logo.png" alt="Logo Radio ITIGEO" height="60" class="d-inline-block align-text-center me-2">
                     Radio ITIGEO
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Apri menu di navigazione">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
@@ -34,7 +36,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <button id="theme-toggle" class="btn">
+                            <button id="theme-toggle" class="btn" aria-label="Cambia tema">
                                 <i class="fas fa-moon"></i>
                             </button>
                         </li>
@@ -49,15 +51,15 @@
         </nav>
         
         <header class="container-fluid text-center my-4">
-            <h1 class="display-3">Radio ITIGEO</h1>
+            <h1 class="display-3 title">Radio ITIGEO</h1>
         </header>
         
         <main class="container">
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-10">
-                    <div class="card bg-glass">
+                    <div class="card bg-glass reveal">
                         <div class="card-body">
-                            <h3 class="title card-title text-center mb-4">Ilustrazione del progetto</h3>
+                            <h3 class="title card-title text-center mb-4">Illustrazione del progetto</h3>
                             <div class="row align-items-center">
                                 <div class="col-md-8">
                                     <p>L'attività riguarda la produzione di contenuti (servizi di cronaca, resoconti di attività, approfondimenti su tematiche di attualità o di studio, interviste a personalità del mondo della cultura, del lavoro, dello star set nazionale ed internazionale, della politica) da pubblicare e divulgare sulla web radio d'istituto "Radio ITIGEO".
@@ -79,7 +81,7 @@
             
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-10">
-                    <div class="card bg-glass">
+                    <div class="card bg-glass reveal">
                         <div class="card-body">
                             <h3 class="title card-title text-center mb-4">La Nostra Sede</h3>
                             <div class="row align-items-center">
@@ -87,6 +89,7 @@
                                     <div class="video-container mb-3 mb-md-0">
                                         <video controls class="w-100 rounded">
                                             <source src="Sede Radio.mp4" type="video/mp4">
+                                            Il tuo browser non supporta i video.
                                         </video>
                                     </div>
                                 </div>
@@ -101,12 +104,12 @@
 
             <div class="row justify-content-center mb-5">
                 <div class="col-lg-10">
-                    <div class="card bg-glass">
+                    <div class="card bg-glass reveal">
                         <div class="card-body">
                             <h3 class="title card-title text-center mb-4">Le Nostre Puntate</h3>
                             
                             <!-- Puntata 1 -->
-                            <div class="episode-container mb-4">
+                            <div class="episode-container mb-4 reveal">
                                 <div class="row g-0 align-items-center">
                                     <div class="col-md-4">
                                         <img src="felicita.png" alt="We love happines" class="img-fluid poster-image rounded">
@@ -116,8 +119,9 @@
                                             <h4 class="title card-title">We love happines</h4>
                                             <p class="card-text">Cosa significa davvero essere felici? In questa puntata esploriamo il concetto di felicità attraverso filosofia, scienza ed esperienze di vita. Dalla ricerca del piacere immediato alla costruzione di un benessere duraturo, rifletteremo su cosa ci rende davvero soddisfatti. Con testimonianze, spunti di riflessione e buona musica, vi accompagneremo in un viaggio alla scoperta della felicità nelle sue molteplici forme.</p>
                                             <div class="audio-player">
-                                                <audio controls class="w-100">
+                                                <audio controls class="w-100" aria-label="Player audio per puntata 1">
                                                     <source src="we_love_happiness.mp3" type="audio/mpeg">
+                                                    Il tuo browser non supporta l'elemento audio.
                                                 </audio>
                                             </div>
                                         </div>
@@ -126,7 +130,7 @@
                             </div>
                             
                             <!-- Puntata 2 -->
-                            <div class="episode-container">
+                            <div class="episode-container reveal">
                                 <div class="row g-0 align-items-center">
                                     <div class="col-md-4">
                                         <img src="Power Up.jpeg" alt="Power Up Cyborg" class="img-fluid poster-image rounded">
@@ -136,7 +140,7 @@
                                             <h4 class="title card-title">Power Up Cyborg</h4>
                                             <p class="card-text">I confini tra umano e artificiale si assottigliano sempre di più. In questa puntata esploriamo il mondo dei cyborg: dalle protesi avanzate alla fusione tra mente e tecnologia, fino alle implicazioni etiche di un futuro in cui l'uomo potrà potenziare il proprio corpo senza limiti. Siamo pronti a diventare più macchina che carne?</p>
                                             <div class="audio-player">
-                                                <audio controls class="w-100">
+                                                <audio controls class="w-100" aria-label="Player audio per puntata 2">
                                                     <source src="power_up_cyborg.mp3" type="audio/mpeg">
                                                     Il tuo browser non supporta l'elemento audio.
                                                 </audio>
@@ -149,18 +153,39 @@
                     </div>
                 </div>
             </div>
+            
+            <!-- Button per tornare all'inizio -->
+            <div class="row justify-content-center mb-5">
+                <div class="col-auto">
+                    <a href="#" class="btn btn-floating" aria-label="Torna all'inizio">
+                        <i class="fas fa-arrow-up"></i>
+                    </a>
+                </div>
+            </div>
         </main>
         
         <footer class="mt-auto py-4">
             <div class="container">
-                <div class="social-icons">
-                    <a href="https://www.facebook.com/p/Radio-Itigeo-100076211826499/" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://www.instagram.com/radioitigeo/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="https://open.spotify.com/show/0Yx8sKFqmElN7pQGfYrMmr?trackId=0ZmhDgy5eWjdLOQFEEe3bm" aria-label="YouTube"><i class="fab fa-spotify"></i></a>
-                </div>
-                <div class="logo-container">
-                    <img src="../image/logo.png" alt="Nicola logo" class="img-fluid">
-                    <p class="mb-0">&copy; 2025 Radio ITIGEO & Nicola Bevilacqua - All rights reserved</p>
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        <div class="logo-container">
+                            <img src="Logo.png" alt="Nicola logo" class="img-fluid me-2" style="max-height: 60px;">
+                            <p class="mb-0">&copy; 2025 Radio ITIGEO & Nicola Bevilacqua - All rights reserved</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-center text-md-end">
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/p/Radio-Itigeo-100076211826499/" aria-label="Facebook" data-bs-toggle="tooltip" data-bs-title="Seguici su Facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="https://www.instagram.com/radioitigeo/" aria-label="Instagram" data-bs-toggle="tooltip" data-bs-title="Seguici su Instagram">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="https://open.spotify.com/show/0Yx8sKFqmElN7pQGfYrMmr?trackId=0ZmhDgy5eWjdLOQFEEe3bm" aria-label="Spotify" data-bs-toggle="tooltip" data-bs-title="Ascoltaci su Spotify">
+                                <i class="fab fa-spotify"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </footer>

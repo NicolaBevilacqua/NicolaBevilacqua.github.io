@@ -213,7 +213,7 @@ document.addEventListener('DOMContentLoaded', function () {
             data: {
                 labels: ['Sviluppo Web', 'Marketing Digitale', 'Design', 'Project Management'],
                 datasets: [{
-                    data: [40, 30, 15, 15],
+                    data: [30, 30, 25, 15],
                     backgroundColor: getChartColors(),
                     borderColor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#2c2c2c' : '#ffffff',
                     borderWidth: 2
