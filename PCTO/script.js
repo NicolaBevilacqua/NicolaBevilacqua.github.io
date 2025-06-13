@@ -1,368 +1,299 @@
-document.addEventListener('DOMContentLoaded', function () {
-    // Cache DOM elements
-    const sections = document.querySelectorAll('.section');
-    const navLinks = document.querySelectorAll('nav ul li a');
-    const nav = document.querySelector('nav');
-    const colorPickerToggle = document.querySelector('.color-picker-toggle');
-    let lastScrollTop = 0;
+// DOM Elements
+const navToggle = document.getElementById('nav-toggle');
+const navMenu = document.getElementById('nav-menu');
+const navLinks = document.querySelectorAll('.nav-link');
+const skillBars = document.querySelectorAll('.progress-bar');
+const logoSignature = document.querySelector('.logo-signature');
+const navbar = document.querySelector('.navbar');
+const fabContainer = document.querySelector('.fab-container');
+const fabMain = document.querySelector('.fab-main');
 
-    // Create color picker menu if it doesn't exist
-    if (!document.querySelector('.color-picker-menu')) {
-        const colorPickerMenu = document.createElement('div');
-        colorPickerMenu.className = 'color-picker-menu';
-        colorPickerMenu.innerHTML = `
-            <div class="color-option">
-                <h4>Colore Primario</h4>
-                <div class="color-buttons primary-colors">
-                    <button class="color-button" style="background: #1854b4" data-color="#1854b4" data-variable="--primary-color"></button>
-                    <button class="color-button" style="background: #ec1839" data-color="#ec1839" data-variable="--primary-color"></button>
-                    <button class="color-button" style="background: #fa5b0f" data-color="#fa5b0f" data-variable="--primary-color"></button>
-                    <button class="color-button" style="background: #37b182" data-color="#37b182" data-variable="--primary-color"></button>
-                </div>
-            </div>
-            <div class="color-option">
-                <h4>Colore Accento</h4>
-                <div class="color-buttons accent-colors">
-                    <button class="color-button" style="background: #1854b4" data-color="#1854b4" data-variable="--accent-color"></button>
-                    <button class="color-button" style="background: #ec1839" data-color="#ec1839" data-variable="--accent-color"></button>
-                    <button class="color-button" style="background: #fa5b0f" data-color="#fa5b0f" data-variable="--accent-color"></button>
-                    <button class="color-button" style="background: #37b182" data-color="#37b182" data-variable="--accent-color"></button>
-                </div>
-            </div>
-        `;
-        document.body.appendChild(colorPickerMenu);
+// State management
+let isMenuOpen = false;
+let isFabOpen = false;
+let currentSection = 'home';
 
-        // Add click handlers for color buttons
-        const colorButtons = colorPickerMenu.querySelectorAll('.color-button');
-        colorButtons.forEach(button => {
-            button.addEventListener('click', function() {
-                const color = this.dataset.color;
-                const variable = this.dataset.variable;
-                document.documentElement.style.setProperty(variable, color);
-                localStorage.setItem(variable, color);
-            });
-        });
-
-        // Toggle color picker menu
-        colorPickerToggle.addEventListener('click', () => {
-            colorPickerMenu.classList.toggle('active');
-        });
-
-        // Close color picker when clicking outside
-        document.addEventListener('click', (e) => {
-            if (!colorPickerMenu.contains(e.target) && !colorPickerToggle.contains(e.target)) {
-                colorPickerMenu.classList.remove('active');
-            }
-        });
-    }
-
-    // Load saved colors
-    const savedPrimaryColor = localStorage.getItem('--primary-color');
-    const savedAccentColor = localStorage.getItem('--accent-color');
-    if (savedPrimaryColor) document.documentElement.style.setProperty('--primary-color', savedPrimaryColor);
-    if (savedAccentColor) document.documentElement.style.setProperty('--accent-color', savedAccentColor);
-
-    // Navigation handling with smooth transitions
-    function handleNavigation(e) {
-        const href = this.getAttribute('href');
-        
-        if (href.startsWith('#')) {
-            e.preventDefault();
-            
-            // Remove active classes
-            navLinks.forEach(link => link.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Smooth scroll with offset for fixed header
-            const targetId = href.substring(1);
-            const targetSection = document.getElementById(targetId);
-            
-            if (targetSection) {
-                const navHeight = nav.offsetHeight;
-                const targetPosition = targetSection.offsetTop - navHeight;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-
-                // Update section visibility after scroll
-                sections.forEach(section => {
-                    section.classList.remove('active');
-                    if (section.id === targetId) {
-                        section.classList.add('active');
-                    }
-                });
-            }
+// Performance optimization - Throttle function
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
         }
     }
-    
-    // Attach click handlers to navigation links
-    navLinks.forEach(link => {
-        link.addEventListener('click', handleNavigation);
-    });
-    
-    // Improved debounce function
-    function debounce(func, wait = 20) {
-        let timeout;
-        return function(...args) {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func.apply(this, args), wait);
-        };
-    }
-    
-    // Enhanced scrollspy with better accuracy
-    function updateActiveSection() {
-        const scrollPosition = window.scrollY + nav.offsetHeight + 50;
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionBottom = sectionTop + section.offsetHeight;
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                // Update navigation
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${section.id}`) {
-                        link.classList.add('active');
-                    }
-                });
-                
-                // Update section visibility
-                sections.forEach(s => s.classList.remove('active'));
-                section.classList.add('active');
-            }
-        });
-    }
-    
-    // Show/hide navigation on scroll
-    function handleNavVisibility() {
-        const currentScrollTop = window.scrollY;
-        
-        if (currentScrollTop > lastScrollTop && currentScrollTop > nav.offsetHeight) {
-            nav.style.transform = 'translateY(-100%)';
-        } else {
-            nav.style.transform = 'translateY(0)';
+}
+
+// Navigation Toggle (Mobile)
+function toggleMobileMenu() {
+    isMenuOpen = !isMenuOpen;
+    navMenu.classList.toggle('active', isMenuOpen);
+    navToggle.classList.toggle('active', isMenuOpen);
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+}
+
+navToggle?.addEventListener('click', toggleMobileMenu);
+
+// Close mobile menu when clicking on a link
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (isMenuOpen) {
+            toggleMobileMenu();
         }
-        
-        lastScrollTop = currentScrollTop;
-    }
-    
-    // Initialize skill bars animation
-    function initializeSkillBars() {
-        const skillLevels = document.querySelectorAll('.skill-level');
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const width = entry.target.style.width;
-                    entry.target.style.width = '0%';
-                    setTimeout(() => {
-                        entry.target.style.width = width;
-                    }, 100);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.5 });
-        
-        skillLevels.forEach(skillLevel => {
-            observer.observe(skillLevel);
-        });
-    }
-    
-    // Theme Toggle
-    const themeToggle = document.querySelector('.theme-toggle');
-    const sunIcon = document.querySelector('.sun-icon');
-    const moonIcon = document.querySelector('.moon-icon');
-    const html = document.documentElement;
-
-    function setTheme(isDark) {
-        html.setAttribute('data-theme', isDark ? 'dark' : 'light');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        sunIcon.style.display = isDark ? 'none' : 'block';
-        moonIcon.style.display = isDark ? 'block' : 'none';
-    }
-
-    // Initialize theme from localStorage
-    const savedTheme = localStorage.getItem('theme') || 'light';
-    setTheme(savedTheme === 'dark');
-
-    themeToggle.addEventListener('click', () => {
-        const isDark = html.getAttribute('data-theme') === 'dark';
-        setTheme(!isDark);
-    });
-
-    // Initialize Charts with theme-aware colors
-    function initializeCharts() {
-        const ctx = document.getElementById('distributionChart');
-        if (!ctx) return;
-        
-        // Definiamo i colori espliciti per il grafico
-        const chartColors = {
-            light: ['#3498db', '#2ecc71', '#e74c3c', '#f1c40f'],
-            dark: ['#4aa3df', '#40d47e', '#ec7063', '#f4d03f']
-        };
-    
-        function getChartColors() {
-            const theme = document.documentElement.getAttribute('data-theme');
-            return theme === 'dark' ? chartColors.dark : chartColors.light;
-        }
-        
-        const chart = new Chart(ctx.getContext('2d'), {
-            type: 'pie',
-            data: {
-                labels: ['Sviluppo Web', 'Marketing Digitale', 'Design', 'Project Management'],
-                datasets: [{
-                    data: [30, 30, 25, 15],
-                    backgroundColor: getChartColors(),
-                    borderColor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#2c2c2c' : '#ffffff',
-                    borderWidth: 2
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    legend: {
-                        display: false
-                    },
-                    tooltip: {
-                        backgroundColor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#2c2c2c' : '#ffffff',
-                        titleColor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#ffffff' : '#2c3e50',
-                        bodyColor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#ffffff' : '#2c3e50',
-                        borderColor: document.documentElement.getAttribute('data-theme') === 'dark' ? '#404040' : '#e0e0e0',
-                        borderWidth: 1,
-                        padding: 12,
-                        callbacks: {
-                            label: function(context) {
-                                return `${context.label}: ${context.raw}%`;
-                            }
-                        }
-                    }
-                }
-            }
-        });
-    
-        // Aggiorna il grafico quando cambia il tema
-        const themeToggle = document.querySelector('.theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            const colors = getChartColors();
-            chart.data.datasets[0].backgroundColor = colors;
-            chart.data.datasets[0].borderColor = document.documentElement.getAttribute('data-theme') === 'dark' ? '#2c2c2c' : '#ffffff';
-            chart.options.plugins.tooltip.backgroundColor = document.documentElement.getAttribute('data-theme') === 'dark' ? '#2c2c2c' : '#ffffff';
-            chart.options.plugins.tooltip.titleColor = document.documentElement.getAttribute('data-theme') === 'dark' ? '#ffffff' : '#2c3e50';
-            chart.options.plugins.tooltip.bodyColor = document.documentElement.getAttribute('data-theme') === 'dark' ? '#ffffff' : '#2c3e50';
-            chart.options.plugins.tooltip.borderColor = document.documentElement.getAttribute('data-theme') === 'dark' ? '#404040' : '#e0e0e0';
-            chart.update();
-        });
-
-        // Update chart colors when theme changes
-        themeToggle.addEventListener('click', () => {
-            chart.update();
-        });
-    }
-
-    // Event listeners
-    window.addEventListener('scroll', debounce(() => {
-        updateActiveSection();
-        handleNavVisibility();
-    }));
-    
-    window.addEventListener('resize', debounce(updateActiveSection));
-    
-    // Initialize all features
-    initializeSkillBars();
-    initializeCharts();
-    updateActiveSection();
-
-    
-    // Funzione per gestire il cambio di sezione
-    function handleSectionChange(targetId) {
-        // Rimuove la classe active da tutte le sezioni e link
-        sections.forEach(section => section.classList.remove('active'));
-        navLinks.forEach(link => link.classList.remove('active'));
-        
-        // Aggiunge la classe active alla sezione target e al link corrispondente
-        const targetSection = document.getElementById(targetId);
-        const targetLink = document.querySelector(`nav ul li a[href="#${targetId}"]`);
-        
-        if (targetSection && targetLink) {
-            targetSection.classList.add('active');
-            targetLink.classList.add('active');
-            
-            // Scroll smooth alla sezione
-            const navHeight = nav.offsetHeight;
-            const targetPosition = targetSection.offsetTop - navHeight;
-            
-            window.scrollTo({
-                top: targetPosition,
-                behavior: 'smooth'
-            });
-
-            // Centro il link attivo nella navbar su mobile
-            if (window.innerWidth <= 768) {
-                const navList = document.querySelector('nav ul');
-                const linkRect = targetLink.getBoundingClientRect();
-                const listRect = navList.getBoundingClientRect();
-                
-                navList.scrollTo({
-                    left: linkRect.left - listRect.left - (listRect.width - linkRect.width) / 2,
-                    behavior: 'smooth'
-                });
-            }
-        }
-    }
-    
-    // Event listener per i link della navigazione
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            handleSectionChange(targetId);
-        });
-    });
-    
-    // Gestione dello scroll e dell'intersezione delle sezioni
-    const observerOptions = {
-        root: null,
-        rootMargin: '-50% 0px',
-        threshold: 0
-    };
-    
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const targetId = entry.target.id;
-                navLinks.forEach(link => {
-                    if (link.getAttribute('href') === `#${targetId}`) {
-                        link.classList.add('active');
-                    } else {
-                        link.classList.remove('active');
-                    }
-                });
-            }
-        });
-    }, observerOptions);
-    
-    sections.forEach(section => sectionObserver.observe(section));
-    
-    // Gestione dello scroll iniziale se c'è un hash nell'URL
-    if (window.location.hash) {
-        const targetId = window.location.hash.substring(1);
-        handleSectionChange(targetId);
-    } else {
-        // Attiva la prima sezione di default
-        handleSectionChange(sections[0].id);
-    }
-    
-    // Gestione del resize della finestra
-    let resizeTimeout;
-    window.addEventListener('resize', function() {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            const activeSection = document.querySelector('.section.active');
-            if (activeSection) {
-                handleSectionChange(activeSection.id);
-            }
-        }, 250);
     });
 });
+
+// Section navigation
+function showSection(targetId) {
+    if (currentSection === targetId) return;
+    
+    const currentSectionEl = document.getElementById(currentSection);
+    const targetSectionEl = document.getElementById(targetId);
+    
+    if (!targetSectionEl) return;
+    
+    // Simple section switching
+    currentSectionEl?.classList.remove('active');
+    targetSectionEl.classList.add('active');
+    
+    currentSection = targetId;
+    history.pushState(null, null, `#${targetId}`);
+    
+    // Initialize section-specific content
+    if (targetId === 'competenze') {
+        setTimeout(() => animateSkillBars(), 100);
+    }
+    
+    updateActiveNavLink(targetId);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Update active navigation link
+function updateActiveNavLink(targetId) {
+    navLinks.forEach(link => link.classList.remove('active'));
+    const activeLink = document.querySelector(`[data-section="${targetId}"]`);
+    activeLink?.classList.add('active');
+}
+
+// Add click event listeners to navigation links
+navLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetSection = link.getAttribute('data-section');
+        if (targetSection) {
+            showSection(targetSection);
+        }
+    });
+});
+
+// Skill bars animation (semplificata)
+function animateSkillBars() {
+    skillBars.forEach((bar, index) => {
+        const level = bar.getAttribute('data-level') || bar.parentElement.getAttribute('data-level');
+        if (level) {
+            setTimeout(() => {
+                bar.style.width = level + '%';
+                bar.classList.add('animated');
+            }, index * 100);
+        }
+    });
+}
+
+// Intersection Observer per animazioni al scroll
+const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+};
+
+const intersectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+            intersectionObserver.unobserve(entry.target);
+        }
+    });
+}, observerOptions);
+
+// Counter animation (semplificata)
+function animateCounter(element, end, suffix = '') {
+    let current = 0;
+    const increment = end / 50;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= end) {
+            element.textContent = end + suffix;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current) + suffix;
+        }
+    }, 40);
+}
+
+// Navbar scroll effects (ottimizzati)
+const handleScroll = throttle(() => {
+    const scrolled = window.pageYOffset > 10;
+    navbar.style.background = scrolled ? 
+        'rgba(255, 255, 255, 0.15)' : 
+        'rgba(255, 255, 255, 0.1)';
+    navbar.style.backdropFilter = scrolled ? 'blur(25px)' : 'blur(20px)';
+    navbar.style.boxShadow = scrolled ? '0 8px 32px rgba(0,0,0,0.1)' : 'none';
+}, 32);
+
+window.addEventListener('scroll', handleScroll);
+
+// Logo click
+logoSignature?.addEventListener('click', () => {
+    logoSignature.style.transform = 'scale(1.1)';
+    setTimeout(() => {
+        logoSignature.style.transform = 'scale(1)';
+    }, 200);
+    showSection('home');
+});
+
+// FAB functionality
+function toggleFAB() {
+    isFabOpen = !isFabOpen;
+    fabContainer?.classList.toggle('active', isFabOpen);
+    if (fabMain) {
+        fabMain.style.transform = isFabOpen ? 'rotate(45deg)' : 'rotate(0deg)';
+    }
+}
+
+fabMain?.addEventListener('click', toggleFAB);
+
+// FAB options
+document.querySelectorAll('.fab-option').forEach(option => {
+    option.addEventListener('click', (e) => {
+        e.stopPropagation();
+        
+        const action = option.getAttribute('data-action');
+        switch(action) {
+            case 'top':
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                break;
+            case 'contact':
+                showSection('contatti');
+                break;
+            case 'download':
+                console.log('Download CV');
+                break;
+            case 'theme':
+                toggleTheme();
+                break;
+        }
+        toggleFAB();
+    });
+});
+
+// Theme toggle
+function toggleTheme() {
+    document.body.classList.toggle('dark-theme');
+    localStorage.setItem('theme', 
+        document.body.classList.contains('dark-theme') ? 'dark' : 'light'
+    );
+}
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        
+        if (target) {
+            if (target.classList.contains('section')) {
+                showSection(targetId);
+            } else {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+});
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        if (isMenuOpen) toggleMobileMenu();
+        if (isFabOpen) toggleFAB();
+    }
+});
+
+// Handle browser navigation
+window.addEventListener('popstate', () => {
+    const hash = window.location.hash.substring(1);
+    const targetSection = hash || 'home';
+    showSection(targetSection);
+});
+
+// Initialization
+function initializePortfolio() {
+    // Set initial section
+    const hash = window.location.hash.substring(1);
+    const initialSection = hash || 'home';
+    showSection(initialSection);
+    
+    // Initialize observers for timeline and skill cards
+    document.querySelectorAll('.timeline-item, .skill-card').forEach(element => {
+        intersectionObserver.observe(element);
+    });
+    
+    // Initialize theme
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+        document.body.classList.add('dark-theme');
+    }
+    
+    // Initialize home counters
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const stats = [150, 8, 12];
+    const suffixes = ['+', '', '+'];
+    
+    statNumbers.forEach((element, index) => {
+        if (element && stats[index]) {
+            setTimeout(() => {
+                animateCounter(element, stats[index], suffixes[index]);
+            }, index * 300);
+        }
+    });
+    
+    console.log('Portfolio initialized successfully!');
+}
+
+// Initialize when ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializePortfolio);
+} else {
+    initializePortfolio();
+}
+
+// Essential CSS animations
+const essentialStyles = `
+    .animate-in {
+        opacity: 1;
+        transform: translateY(0);
+        transition: all 0.6s ease;
+    }
+    
+    .timeline-item,
+    .skill-card {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    
+    .progress-bar.animated {
+        transition: width 1s ease;
+    }
+    
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+`;
+
+const styleSheet = document.createElement('style');
+styleSheet.textContent = essentialStyles;
+document.head.appendChild(styleSheet);
