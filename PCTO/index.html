@@ -19,81 +19,93 @@
     </div>
 
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="navbar" role="navigation" aria-label="Navigazione principale">
         <div class="nav-container">
             <div class="nav-logo">
                 <div class="logo-icon">
-                    <img src="../image/logo.png" alt="Il mio logo" class="logo">
+                    <img src="../image/logo.png" alt="Logo portfolio" class="logo">
                 </div>
                 <h2>PCTO Journey</h2>
             </div>
+            
+            <!-- Menu principale -->
             <div class="nav-menu" id="nav-menu">
-                <a href="#home" class="nav-link active" data-section="home">
-                    <i class="fas fa-home"></i>
+                <a href="#home" class="nav-link active" data-section="home" aria-current="page">
+                    <i class="fas fa-home" aria-hidden="true"></i>
                     <span>Home</span>
                 </a>
                 <a href="#percorso" class="nav-link" data-section="percorso">
-                    <i class="fas fa-route"></i>
+                    <i class="fas fa-route" aria-hidden="true"></i>
                     <span>Percorso</span>
                 </a>
                 <a href="#competenze" class="nav-link" data-section="competenze">
-                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star" aria-hidden="true"></i>
                     <span>Competenze</span>
                 </a>
             </div>
-            <div class="nav-toggle" id="nav-toggle">
+            
+            <!-- Pulsante hamburger per mobile -->
+            <button class="nav-toggle" id="nav-toggle" aria-label="Apri menu navigazione" aria-expanded="false">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
-            </div>
+            </button>
         </div>
     </nav>
 
-    <!-- Main Content -->
+    <!-- Contenuto principale -->
     <main class="main-content">
-        <!-- Home Section -->
-        <section id="home" class="section active">
+        <!-- Sezione Home -->
+        <section id="home" class="section active" aria-labelledby="home-title">
             <div class="container">
                 <div class="hero">
                     <div class="hero-content">
+                        <!-- Badge studente -->
                         <div class="hero-badge">
-                            <i class="fas fa-graduation-cap"></i>
+                            <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                             <span>Studente PCTO 2022-2025</span>
                         </div>
-                        <h1 class="hero-title">
+                        
+                        <!-- Titolo principale -->
+                        <h1 class="hero-title" id="home-title">
                             <span class="highlight">Nicola Bevilacqua</span>
                         </h1>
                         <p class="hero-subtitle">Studente appassionato di tecnologia e innovazione</p>
+                        
+                        <!-- Descrizione dettagliata -->
                         <div class="hero-description">
-                            <p>Benvenuto nel mio portfolio PCTO digitale! Qui racconto il mio percorso tra laboratori, progetti e corsi che mi hanno fatto crescere nel campo dell’informatica e non solo.</p>
-                            <p>Ho esplorato nuovi linguaggi di programmazione, modellazione 3D, ambienti di sviluppo e sicurezza sul lavoro. Ho anche imparato ad orientarmi in montagna e a lavorare meglio in gruppo, migliorando comunicazione e collaborazione.</p>
-                            <p>Ogni esperienza è stata una tappa concreta verso il mio futuro, fatta di passione, tecnica e creatività.</p>
+                            <p>Benvenuto nel mio portfolio digitale PCTO. Qui racconto il mio percorso tra laboratori, progetti e corsi che mi hanno formato nell'informatica e non solo.</p>
+                            <p>Ho imparato nuovi linguaggi di programmazione, modellazione 3D, ambienti di sviluppo e sicurezza sul lavoro. Ho acquisito anche competenze di orientamento in montagna e migliorato il lavoro in gruppo, sviluppando comunicazione e collaborazione.</p>
+                            <p>Ogni esperienza è stata un passo concreto verso il mio futuro, unendo passione, tecnica e creatività.</p>
                         </div>
             
+                        <!-- Call to action -->
                         <div class="hero-cta">
-                            <button class="cta-primary" onclick="showSection('percorso')">
+                            <button class="cta-primary" onclick="showSection('percorso')" aria-label="Vai alla sezione percorso">
                                 <span>Scopri il Percorso</span>
-                                <i class="fas fa-arrow-right"></i>
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i>
                             </button>
-                            <button class="cta-secondary" onclick="showSection('competenze')">
-                                <i class="fas fa-chart-line"></i>
+                            <button class="cta-secondary" onclick="showSection('competenze')" aria-label="Vai alla sezione competenze">
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
                                 <span>Competenze</span>
                             </button>
                         </div>
                     </div>
                     
+                    <!-- Sezione visiva con avatar e statistiche -->
                     <div class="hero-visual">
                         <div class="hero-avatar">
                             <div class="avatar-ring"></div>
                             <div class="avatar-content">
-                                <img src="../image/io.png" alt="Una mia foto" class="avatar-image">
+                                <img src="../image/io.png" alt="Foto di Nicola Bevilacqua" class="avatar-image">
                             </div>
                         </div>
                         
+                        <!-- Statistiche fluttuanti -->
                         <div class="floating-stats">
                             <div class="stat-card">
                                 <div class="stat-icon">
-                                    <i class="fas fa-clock"></i>
+                                    <i class="fas fa-clock" aria-hidden="true"></i>
                                 </div>
                                 <div class="stat-info">
                                     <span class="stat-number">150+</span>
@@ -103,7 +115,7 @@
                             
                             <div class="stat-card">
                                 <div class="stat-icon">
-                                    <i class="fas fa-tasks"></i>
+                                    <i class="fas fa-tasks" aria-hidden="true"></i>
                                 </div>
                                 <div class="stat-info">
                                     <span class="stat-number">8</span>
@@ -113,7 +125,7 @@
                             
                             <div class="stat-card">
                                 <div class="stat-icon">
-                                    <i class="fas fa-trophy"></i>
+                                    <i class="fas fa-trophy" aria-hidden="true"></i>
                                 </div>
                                 <div class="stat-info">
                                     <span class="stat-number">12</span>
@@ -126,193 +138,225 @@
             </div>
         </section>
 
-        <!-- Percorso Section -->
-        <section id="percorso" class="section">
+        <!-- Sezione Percorso PCTO -->
+        <section id="percorso" class="section" aria-labelledby="percorso-title">
             <div class="container">
                 <div class="section-header">
                     <div class="section-badge">
-                        <i class="fas fa-map-marked-alt"></i>
+                        <i class="fas fa-map-marked-alt" aria-hidden="true"></i>
                         <span>Il Mio Viaggio</span>
                     </div>
-                    <h2 class="section-title">Percorso PCTO</h2>
-                    <p class="section-subtitle">Un viaggio attraverso esperienze formative che hanno plasmato la mia crescita professionale</p>
+                    <h2 class="section-title" id="percorso-title">Percorso PCTO</h2>
+                    <p class="section-subtitle">Un viaggio tra esperienze formative che hanno segnato la mia crescita professionale</p>
                 </div>
                 
+                <!-- Timeline verticale -->
                 <div class="timeline-container">
-                    <div class="timeline">
-                        <div class="timeline-item" data-date="Set 2024">
+                    <div class="timeline" role="list">
+                        
+                        <!-- Evento 1: Formazione Sicurezza -->
+                        <div class="timeline-item" data-date="Dic 2022" role="listitem">
                             <div class="timeline-marker">
                                 <div class="marker-inner">
-                                    <i class="fas fa-play"></i>
+                                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="timeline-content">
                                 <div class="timeline-header">
-                                    <h3>Formazione Sicurezza Dei Lavoratori</h3>
+                                    <h3>Formazione Sicurezza</h3>
                                     <span class="timeline-date">13 Dicembre 2022</span>
                                 </div>
-                                <p>Ho partecipato a una videolezione di 4 ore, tenuta in presenza a scuola, sulla sicurezza nei luoghi di lavoro secondo il D.Lgs. 81/2008. La lezione ha trattato i concetti base di rischio, prevenzione, protezione, e i ruoli e doveri dei lavoratori. Al termine ho ricevuto un attestato valido anche per esperienze future. </p>
+                                <p>Ho seguito una videolezione di 4 ore in presenza sulla sicurezza nei luoghi di lavoro (D.Lgs. 81/2008). Ho appreso i concetti base di rischio, prevenzione, protezione e i ruoli dei lavoratori. Ho ricevuto un attestato valido per esperienze future.</p>
                                 <div class="timeline-tags">
                                     <span class="tag tag-blue">
-                                        <i class="fas fa-compass"></i>
+                                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                                         Formazione
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="timeline-item" data-date="Ott 2024">
-                            <div class="timeline-marker">
-                                <div class="marker-inner">
-                                </div>
-                            </div>
-                            <div class="timeline-content">
-                                <div class="timeline-header">
-                                    <h3>Polo Bibleotecario</h3>
-                                    <span class="timeline-date">2022/2023</span>
-                                </div>
-                                <p>Ho partecipato a un laboratorio dove ho costruito un robot basato su Arduino. Ho progettato le parti con la modellazione 3D e le ho realizzate usando un taglierino laser. Il progetto è stato documentato in modo completo su Wikipedia, descrivendo ogni fase: dalla progettazione alla programmazione.</p>
-                                <div class="timeline-tags">
-                                    <span class="tag tag-purple">
-                                        <i class="fas fa-microchip"></i>
-                                        Digitale
                                     </span>
                                     <span class="tag tag-orange">
-                                        <i class="fas fa-tools"></i>
-                                        modellazione 3D
+                                        <i class="fas fa-hard-hat" aria-hidden="true"></i>
+                                        Sicurezza
                                     </span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="timeline-item" data-date="Nov 2024">
+                        <!-- Evento 2: Polo Bibliotecario -->
+                        <div class="timeline-item" data-date="2022/2023" role="listitem">
                             <div class="timeline-marker">
                                 <div class="marker-inner">
+                                    <i class="fas fa-robot" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="timeline-content">
                                 <div class="timeline-header">
-                                    <h3>Orientamento Scuola-Universita</h3>
+                                    <h3>Polo Bibliotecario - Robot Arduino</h3>
+                                    <span class="timeline-date">Anno scolastico 2022/2023</span>
+                                </div>
+                                <p>Ho costruito un robot con Arduino, progettando le parti in 3D e realizzandole con taglio laser. Ho documentato tutto su Wikipedia, descrivendo ogni fase dalla progettazione alla programmazione.</p>
+                                <div class="timeline-tags">
+                                    <span class="tag tag-purple">
+                                        <i class="fas fa-microchip" aria-hidden="true"></i>
+                                        Digitale
+                                    </span>
+                                    <span class="tag tag-green">
+                                        <i class="fas fa-cube" aria-hidden="true"></i>
+                                        Modellazione 3D
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Evento 3: Orientamento Università -->
+                        <div class="timeline-item" data-date="Mag 2024" role="listitem">
+                            <div class="timeline-marker">
+                                <div class="marker-inner">
+                                    <i class="fas fa-university" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                            <div class="timeline-content">
+                                <div class="timeline-header">
+                                    <h3>Orientamento Scuola-Università</h3>
                                     <span class="timeline-date">8 Maggio 2024</span>
                                 </div>
-                                <p>Ho partecipato a un laboratorio di orientamento presso l’Università degli Studi della Basilicata (UNIBAS). Durante l’incontro ci sono stati presentati i diversi percorsi di studio offerti dall’ateneo. Abbiamo anche svolto attività pratiche, tra cui laboratori di debate, per sviluppare capacità argomentative e di confronto.</p>
+                                <p>Ho partecipato a un laboratorio di orientamento all'Università della Basilicata. Ci hanno presentato i corsi di studio e svolto attività pratiche come laboratori di debate per migliorare capacità di argomentazione e confronto.</p>
                                 <div class="timeline-tags">
                                     <span class="tag tag-red">
-                                        <i class="fas fa-compass"></i>
+                                        <i class="fas fa-compass" aria-hidden="true"></i>
                                         Orientamento
+                                    </span>
+                                    <span class="tag tag-yellow">
+                                        <i class="fas fa-comments" aria-hidden="true"></i>
+                                        Debate
                                     </span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="timeline-item" data-date="Nov 2024">
+                        <!-- Evento 4: IT Essentials -->
+                        <div class="timeline-item" data-date="Giu 2024" role="listitem">
                             <div class="timeline-marker">
                                 <div class="marker-inner">
+                                    <i class="fas fa-certificate" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="timeline-content">
                                 <div class="timeline-header">
-                                    <h3>IT Essentials</h3>
+                                    <h3>Certificazione IT Essentials Cisco</h3>
                                     <span class="timeline-date">12 Giugno 2024</span>
                                 </div>
-                                <p>Ho conseguito la certificazione IT Essentials rilasciata da Cisco. Il corso ha coperto le basi dell’hardware, del software, della manutenzione dei computer e delle reti. Ho svolto attività teoriche e pratiche su assemblaggio PC, diagnostica dei guasti e sicurezza informatica. Al termine, ho superato l’esame finale con attestato riconosciuto a livello internazionale.</p>
+                                <p>Ho ottenuto la certificazione IT Essentials di Cisco. Il corso ha coperto hardware, software, manutenzione PC e reti. Ho fatto esercitazioni su assemblaggio, diagnostica e sicurezza. Ho superato l'esame con attestato riconosciuto a livello internazionale.</p>
                                 <div class="timeline-tags">
-                                    <span class="tag tag-red">
-                                        <i class="fas fa-compass"></i>
+                                    <span class="tag tag-blue">
+                                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                                         Formazione
                                     </span>
                                     <span class="tag tag-purple">
-                                        <i class="fas fa-microchip"></i>
-                                        Digitale
+                                        <i class="fas fa-network-wired" aria-hidden="true"></i>
+                                        Reti
                                     </span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="timeline-item" data-date="Dic 2024">
+                        <!-- Evento 5: Contest Informatica -->
+                        <div class="timeline-item" data-date="2023/2024" role="listitem">
                             <div class="timeline-marker">
                                 <div class="marker-inner">
+                                    <i class="fas fa-gamepad" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="timeline-content">
                                 <div class="timeline-header">
-                                    <h3>Contest Informatica X Gioco = Fantasia + Regole</h3>
-                                    <span class="timeline-date">2023/2024</span>
+                                    <h3>Contest Informatica "X Gioco = Fantasia + Regole"</h3>
+                                    <span class="timeline-date">Anno scolastico 2023/2024</span>
                                 </div>
-                                <p>SHo partecipato a un contest di gruppo organizzato dall’Università di Camerino, dedicato allo sviluppo di un videogioco. Abbiamo seguito lezioni introduttive dove ci hanno spiegato il funzionamento del gioco, i temi da seguire e le regole del concorso. Ci hanno presentato Unity e il linguaggio C#, dandoci le basi per lavorare insieme alla progettazione e realizzazione del gioco.</p>
+                                <p>Ho partecipato a un contest organizzato dall'Università di Camerino per sviluppare un videogioco. Abbiamo imparato Unity e C# e lavorato in team per progettare e realizzare il gioco.</p>
                                 <div class="timeline-tags">
                                     <span class="tag tag-yellow">
-                                        <i class="fas fa-handshake"></i>
+                                        <i class="fas fa-users" aria-hidden="true"></i>
                                         Teamwork
                                     </span>
                                     <span class="tag tag-indigo">
-                                        <i class="fas fa-project-diagram"></i>
-                                        Progetto
+                                        <i class="fas fa-code" aria-hidden="true"></i>
+                                        C# Unity
                                     </span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="timeline-item" data-date="Ott 2024">
+                        <!-- Evento 6: IA Microsoft Parte 1 -->
+                        <div class="timeline-item" data-date="Mar 2025" role="listitem">
                             <div class="timeline-marker">
                                 <div class="marker-inner">
+                                    <i class="fas fa-brain" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="timeline-content">
                                 <div class="timeline-header">
-                                    <h3>Corso Sull'IA generativa Microsoft (Parte Prima)</h3>
+                                    <h3>Corso IA Generativa Microsoft (Parte 1)</h3>
                                     <span class="timeline-date">20 Marzo 2025</span>
                                 </div>
-                                <p>Ho iniziato il corso Microsoft sull’IA generativa, dove ho appreso i concetti base dell’intelligenza artificiale, il funzionamento dei modelli generativi e le loro applicazioni pratiche. Ho seguito lezioni teoriche e esercitazioni per capire come creare contenuti digitali con l’IA.</p>
+                                <p>Ho iniziato un corso Microsoft sull'IA generativa. Ho appreso i concetti base, il funzionamento dei modelli generativi e le applicazioni pratiche. Ho seguito lezioni teoriche e fatto esercitazioni su contenuti digitali creati con l'IA.</p>
                                 <div class="timeline-tags">
                                     <span class="tag tag-purple">
-                                        <i class="fas fa-microchip"></i>
-                                        Competennteze Digitali sull'IA
+                                        <i class="fas fa-robot" aria-hidden="true"></i>
+                                        Intelligenza Artificiale
+                                    </span>
+                                    <span class="tag tag-blue">
+                                        <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+                                        Formazione
                                     </span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="timeline-item" data-date="Ott 2024">
+                        <!-- Evento 7: IA Microsoft Parte 2 -->
+                        <div class="timeline-item" data-date="Mar 2025" role="listitem">
                             <div class="timeline-marker">
                                 <div class="marker-inner">
+                                    <i class="fas fa-cogs" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="timeline-content">
                                 <div class="timeline-header">
-                                    <h3>Corso Sull'IA generativa Microsoft (Parte Seconda)</h3>
-                                    <span class="timeline-date">20 Marzo 2025</span>
+                                    <h3>Corso IA Generativa Microsoft (Parte 2)</h3>
+                                    <span class="timeline-date">Marzo 2025</span>
                                 </div>
-                                <p>Ho completato il corso Microsoft sull’IA generativa, approfondendo tecniche avanzate e strumenti per sviluppare soluzioni innovative. Il percorso mi ha permesso di realizzare progetti concreti usando modelli generativi, migliorando la mia capacità di integrare l’IA in ambito tecnologico.</p>
+                                <p>Ho completato il corso approfondendo tecniche avanzate e strumenti per soluzioni innovative. Ho realizzato progetti concreti usando modelli generativi, migliorando l'uso dell'IA in campo tecnologico.</p>
                                 <div class="timeline-tags">
                                     <span class="tag tag-purple">
-                                        <i class="fas fa-microchip"></i>
-                                        Competennteze Digitali sull'IA
+                                        <i class="fas fa-robot" aria-hidden="true"></i>
+                                        IA Avanzata
+                                    </span>
+                                    <span class="tag tag-indigo">
+                                        <i class="fas fa-project-diagram" aria-hidden="true"></i>
+                                        Progetti
                                     </span>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="timeline-item" data-date="Nov 2024">
+                        <!-- Evento 8: Dalla Bussola al GPS -->
+                        <div class="timeline-item" data-date="Apr 2025" role="listitem">
                             <div class="timeline-marker">
                                 <div class="marker-inner">
-                                    <i class="fas fa-trophy"></i>
+                                    <i class="fas fa-mountain" aria-hidden="true"></i>
                                 </div>
                             </div>
                             <div class="timeline-content">
                                 <div class="timeline-header">
-                                    <h3>Dalla Bussola al GPS</h3>
+                                    <h3>Dalla Bussola al GPS - Progetto CAI</h3>
                                     <span class="timeline-date">12 Aprile 2025</span>
                                 </div>
-                                <p>Ho partecipato a un progetto con il Club Alpino Italiano (CAI) che prevedeva lezioni in classe sulla sicurezza in montagna e sui comportamenti corretti da tenere durante le escursioni. Il percorso si è concluso con un’uscita pratica in montagna, dove abbiamo applicato quanto imparato in ambiente reale.</p>
+                                <p>Ho partecipato a un progetto con il Club Alpino Italiano. Abbiamo fatto lezioni in classe sulla sicurezza in montagna e comportamenti corretti durante le escursioni. Il percorso si è concluso con un'uscita pratica sul terreno.</p>
                                 <div class="timeline-tags">
                                     <span class="tag tag-red">
-                                        <i class="fas fa-compass"></i>
-                                        Orientamento in montagna
+                                        <i class="fas fa-compass" aria-hidden="true"></i>
+                                        Orientamento
                                     </span>
                                     <span class="tag tag-orange">
-                                        <i class="fas fa-tools"></i>
-                                        Formazione e Sicurezza
+                                        <i class="fas fa-hiking" aria-hidden="true"></i>
+                                        Esperienza Pratica
                                     </span>
                                 </div>
                             </div>
@@ -322,29 +366,31 @@
             </div>
         </section>
 
-        <!-- Competenze Section -->
-        <section id="competenze" class="section">
+        <!-- Sezione Competenze -->
+        <section id="competenze" class="section" aria-labelledby="competenze-title">
             <div class="container">
                 <div class="section-header">
                     <div class="section-badge">
-                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star" aria-hidden="true"></i>
                         <span>Le Mie Abilità</span>
                     </div>
-                    <h2 class="section-title">Competenze Acquisite</h2>
+                    <h2 class="section-title" id="competenze-title">Competenze Acquisite</h2>
                     <p class="section-subtitle">Skills sviluppate attraverso esperienze pratiche e formazione mirata nel mondo professionale</p>
                 </div>
                 
+                <!-- Griglia competenze -->
                 <div class="skills-grid">
+                    <!-- Competenza 1: Digitali -->
                     <div class="skill-card" data-skill="85">
                         <div class="skill-header">
                             <div class="skill-icon">
-                                <i class="fas fa-laptop-code"></i>
+                                <i class="fas fa-laptop-code" aria-hidden="true"></i>
                             </div>
                             <div class="skill-percentage">85%</div>
                         </div>
                         <h3>Competenze Digitali</h3>
                         <p>Padronanza di strumenti informatici avanzati, automazione dei processi e utilizzo efficace delle piattaforme digitali moderne.</p>
-                        <div class="skill-progress">
+                        <div class="skill-progress" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
                             <div class="progress-bar" data-level="85"></div>
                         </div>
                         <div class="skill-tags">
@@ -354,16 +400,17 @@
                         </div>
                     </div>
 
+                    <!-- Competenza 2: Teamwork -->
                     <div class="skill-card" data-skill="90">
                         <div class="skill-header">
                             <div class="skill-icon">
-                                <i class="fas fa-users"></i>
+                                <i class="fas fa-users" aria-hidden="true"></i>
                             </div>
                             <div class="skill-percentage">90%</div>
                         </div>
                         <h3>Lavoro di Squadra</h3>
                         <p>Capacità di collaborare efficacemente in team multidisciplinari, gestire dinamiche di gruppo e raggiungere obiettivi condivisi.</p>
-                        <div class="skill-progress">
+                        <div class="skill-progress" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
                             <div class="progress-bar" data-level="90"></div>
                         </div>
                         <div class="skill-tags">
@@ -373,16 +420,17 @@
                         </div>
                     </div>
 
+                    <!-- Competenza 3: Problem Solving -->
                     <div class="skill-card" data-skill="80">
                         <div class="skill-header">
                             <div class="skill-icon">
-                                <i class="fas fa-lightbulb"></i>
+                                <i class="fas fa-lightbulb" aria-hidden="true"></i>
                             </div>
                             <div class="skill-percentage">80%</div>
                         </div>
                         <h3>Problem Solving</h3>
                         <p>Approccio strutturato all'analisi dei problemi, pensiero critico e sviluppo di soluzioni creative e sostenibili.</p>
-                        <div class="skill-progress">
+                        <div class="skill-progress" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">
                             <div class="progress-bar" data-level="80"></div>
                         </div>
                         <div class="skill-tags">
@@ -392,16 +440,17 @@
                         </div>
                     </div>
 
+                    <!-- Competenza 4: Comunicazione -->
                     <div class="skill-card" data-skill="75">
                         <div class="skill-header">
                             <div class="skill-icon">
-                                <i class="fas fa-comments"></i>
+                                <i class="fas fa-comments" aria-hidden="true"></i>
                             </div>
                             <div class="skill-percentage">75%</div>
                         </div>
                         <h3>Comunicazione</h3>
                         <p>Comunicazione efficace in contesti professionali diversi, presentazioni convincenti e ascolto attivo.</p>
-                        <div class="skill-progress">
+                        <div class="skill-progress" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
                             <div class="progress-bar" data-level="75"></div>
                         </div>
                         <div class="skill-tags">
@@ -411,16 +460,17 @@
                         </div>
                     </div>
 
+                    <!-- Competenza 5: Gestione Progetti -->
                     <div class="skill-card" data-skill="70">
                         <div class="skill-header">
                             <div class="skill-icon">
-                                <i class="fas fa-chart-line"></i>
+                                <i class="fas fa-chart-line" aria-hidden="true"></i>
                             </div>
                             <div class="skill-percentage">70%</div>
                         </div>
                         <h3>Gestione Progetti</h3>
                         <p>Pianificazione strategica, gestione delle risorse, rispetto delle deadline e coordinamento di attività complesse.</p>
-                        <div class="skill-progress">
+                        <div class="skill-progress" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">
                             <div class="progress-bar" data-level="70"></div>
                         </div>
                         <div class="skill-tags">
@@ -430,16 +480,17 @@
                         </div>
                     </div>
 
+                    <!-- Competenza 6: Adattabilità -->
                     <div class="skill-card" data-skill="85">
                         <div class="skill-header">
                             <div class="skill-icon">
-                                <i class="fas fa-sync-alt"></i>
+                                <i class="fas fa-sync-alt" aria-hidden="true"></i>
                             </div>
                             <div class="skill-percentage">85%</div>
                         </div>
                         <h3>Adattabilità</h3>
                         <p>Flessibilità mentale, resilienza al cambiamento e capacità di prosperare in ambienti dinamici e sfidanti.</p>
-                        <div class="skill-progress">
+                        <div class="skill-progress" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">
                             <div class="progress-bar" data-level="85"></div>
                         </div>
                         <div class="skill-tags">
@@ -456,18 +507,22 @@
     <!-- Floating Action Button -->
     <div class="floating-action">
         <div class="fab-container">
-            <div class="fab-main" id="fab-main">
-                <i class="fas fa-plus"></i>
-            </div>
-            <div class="fab-options">
-                <div class="fab-option" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                    <i class="fas fa-arrow-up"></i>
+            <button class="fab-main" id="fab-main" aria-label="Menu azioni rapide" aria-expanded="false">
+                <i class="fas fa-plus" aria-hidden="true"></i>
+            </button>
+            <div class="fab-options" id="fab-options">
+                <button class="fab-option" data-action="scroll-top" aria-label="Torna all'inizio">
+                    <i class="fas fa-arrow-up" aria-hidden="true"></i>
                     <span class="fab-tooltip">Torna su</span>
-                </div>
-                <div class="fab-option" onclick="showSection('home')">
-                    <i class="fas fa-home"></i>
+                </button>
+                <button class="fab-option" data-action="home" aria-label="Vai alla home">
+                    <i class="fas fa-home" aria-hidden="true"></i>
                     <span class="fab-tooltip">Home</span>
-                </div>
+                </button>
+                <button class="fab-option" data-action="theme" aria-label="Cambia tema">
+                    <i class="fas fa-palette" aria-hidden="true"></i>
+                    <span class="fab-tooltip">Tema</span>
+                </button>
             </div>
         </div>
     </div>
