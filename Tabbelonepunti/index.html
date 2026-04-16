@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coppa delle Confraternite - Collegio Alba di Estel</title>
+  <title>Coppa delle Confraternite - Alba di Estel</title>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
       --gold: #d4af37;
       /* Aramitas: Bianco, verde chiaro e oro pallido */
-      --ara: linear-gradient(90deg, rgba(144,238,144,0.3) 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
-      --ara-border: #eee8aa;
+      --ara: linear-gradient(135deg, rgba(144,238,144,0.15) 0%, transparent 100%);
+      --ara-b: #eee8aa;
       /* Shelby: Viola */
-      --she: linear-gradient(90deg, rgba(106,13,173,0.3) 0%, rgba(147,112,219,0.05) 50%, transparent 100%);
-      --she-border: #9370db;
+      --she: linear-gradient(135deg, rgba(147,112,219,0.15) 0%, transparent 100%);
+      --she-b: #9370db;
       /* Shamash: Blu profondo e argento */
-      --sha: linear-gradient(90deg, rgba(0,31,63,0.5) 0%, rgba(192,192,192,0.05) 50%, transparent 100%);
-      --sha-border: #c0c0c0;
+      --sha: linear-gradient(135deg, rgba(0,31,63,0.35) 0%, transparent 100%);
+      --sha-b: #c0c0c0;
       /* Derek: Rosso e blu */
-      --der: linear-gradient(90deg, rgba(139,0,0,0.3) 0%, rgba(0,0,139,0.1) 50%, transparent 100%);
-      --der-border: #cd5c5c;
+      --der: linear-gradient(135deg, rgba(139,0,0,0.15) 0%, rgba(0,0,139,0.1) 100%);
+      --der-b: #cd5c5c;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -28,41 +28,29 @@
     body {
       min-height: 100vh;
       background: #050505;
-      background-image: 
-        radial-gradient(circle at 50% 50%, rgba(26, 18, 11, 0.4), #050505),
-        url('https://www.transparenttextures.com/patterns/dark-stone.png');
+      background-image: radial-gradient(circle at 50% 50%, #1a120b, #050505);
       color: #e9dcc6;
       font-family: 'Cinzel', serif;
-      padding: 60px 20px;
+      padding: 40px 15px;
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
-    /* TITOLO MONUMENTALE */
     .academy-header {
       text-align: center;
-      margin-bottom: 80px;
+      margin-bottom: 50px;
     }
 
     .academy-header h1 {
       font-family: 'Cinzel Decorative', cursive;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-size: clamp(1.8rem, 8vw, 4rem);
       background: linear-gradient(to bottom, #fff 20%, var(--gold) 100%);
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.5));
+      filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.4));
       text-transform: uppercase;
       line-height: 1.1;
-    }
-
-    .academy-header p {
-      letter-spacing: 12px;
-      font-size: 1.1rem;
-      color: var(--gold);
-      opacity: 0.8;
-      margin-top: 10px;
-      text-shadow: 2px 2px 5px #000;
     }
 
     .ranking-container {
@@ -72,52 +60,47 @@
       gap: 35px;
     }
 
-    /* RIGA CONFRATERNITA: Ribilanciata con gradienti fumosi */
+    /* RIGA DESKTOP / CARTA MOBILE */
     .guild-row {
       display: flex;
       align-items: center;
       background: #0a0a0a;
-      border: 1px solid rgba(212, 175, 55, 0.1);
-      box-shadow: 15px 15px 40px rgba(0,0,0,0.9), inset 0 0 50px rgba(0,0,0,0.8);
+      border: 1px solid rgba(212, 175, 55, 0.15);
+      box-shadow: 10px 10px 30px rgba(0,0,0,0.8);
       position: relative;
       overflow: hidden;
-      transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.4s ease;
     }
 
-    /* L'aura cromatica che emana dal logo */
     .guild-row::before {
       content: '';
       position: absolute;
       inset: 0;
       background: var(--guild-grad);
-      opacity: 0.7;
       pointer-events: none;
     }
 
+    /* CORNICE LOGO ARALDICA */
     .heraldic-frame {
-      width: 190px;
-      height: 190px;
-      padding: 10px;
+      width: 180px;
+      height: 180px;
+      padding: 8px;
       background: #000;
       border: 3px solid var(--guild-border);
-      box-shadow: 0 0 30px var(--guild-border);
+      box-shadow: 0 0 20px var(--guild-border);
       display: flex;
       align-items: center;
       justify-content: center;
       flex-shrink: 0;
-      margin: 25px;
+      margin: 20px;
       z-index: 2;
     }
 
-    .heraldic-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    .heraldic-frame img { width: 100%; height: 100%; object-fit: cover; }
 
     .guild-info {
       flex: 1;
-      padding: 20px 40px;
+      padding: 10px 40px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -125,57 +108,75 @@
     }
 
     .name-motto h2 {
-      font-size: 2.6rem;
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
       color: #fff;
-      text-shadow: 3px 3px 8px #000;
-      letter-spacing: 3px;
+      text-shadow: 2px 2px 4px #000;
     }
 
     .name-motto p {
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       color: var(--guild-border);
       text-transform: uppercase;
-      letter-spacing: 5px;
-      margin-bottom: 8px;
-      text-shadow: 1px 1px 2px #000;
-    }
-
-    .guild-score {
-      text-align: right;
+      letter-spacing: 3px;
+      margin-bottom: 5px;
     }
 
     .score-val {
       font-family: 'Cinzel Decorative', cursive;
-      font-size: 5.5rem;
-      line-height: 1;
+      font-size: clamp(3.5rem, 12vw, 5.5rem);
       color: #fff;
       text-shadow: 0 0 25px var(--guild-border);
     }
 
-    .score-label {
-      font-size: 0.8rem;
-      color: var(--gold);
-      letter-spacing: 6px;
-      text-transform: uppercase;
+    /* CLASSI IDENTITÀ */
+    .aramitas { --guild-grad: var(--ara); --guild-border: var(--ara-b); }
+    .schelby  { --guild-grad: var(--she); --guild-border: var(--she-b); }
+    .shamash  { --guild-grad: var(--sha); --guild-border: var(--sha-b); }
+    .derek    { --guild-grad: var(--der); --guild-border: var(--der-b); }
+
+    /* --- OTTIMIZZAZIONE MOBILE: LA SVOLTA --- */
+    @media (max-width: 800px) {
+      body { padding: 30px 10px; }
+      
+      .ranking-container { gap: 40px; }
+
+      .guild-row {
+        flex-direction: column;
+        padding: 30px 15px;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      .guild-row::before {
+        /* Gradiente verticale per mobile per non tagliare il colore */
+        background: linear-gradient(180deg, var(--guild-border) -300%, transparent 100%);
+      }
+
+      .heraldic-frame {
+        width: 220px; /* Logo più grande su mobile */
+        height: 220px;
+        margin: 0 0 20px 0;
+      }
+
+      .guild-info {
+        flex-direction: column;
+        padding: 0;
+        gap: 20px;
+        width: 100%;
+      }
+
+      .name-motto h2 { font-size: 2rem; }
+      
+      .guild-score {
+        width: 100%;
+        border-top: 1px solid rgba(212, 175, 55, 0.2);
+        padding-top: 15px;
+      }
+      
+      .score-val { font-size: 5rem; }
     }
 
-    /* Classi per applicare le palette sfumate */
-    .aramitas { --guild-grad: var(--ara); --guild-border: var(--ara-border); }
-    .schelby  { --guild-grad: var(--she); --guild-border: var(--she-border); }
-    .shamash  { --guild-grad: var(--sha); --guild-border: var(--sha-border); }
-    .derek    { --guild-grad: var(--der); --guild-border: var(--der-border); }
-
-    .guild-row:hover {
-      transform: scale(1.02) translateX(20px);
-      border-color: var(--gold);
-      box-shadow: -10px 0 30px var(--guild-border), 15px 15px 50px rgba(0,0,0,1);
-    }
-
-    @media (max-width: 900px) {
-      .guild-row { flex-direction: column; padding-bottom: 30px; }
-      .guild-info { flex-direction: column; gap: 20px; text-align: center; }
-      .guild-score { text-align: center; }
-    }
+    .guild-row:hover { transform: scale(1.02); }
   </style>
 </head>
 <body>
@@ -188,85 +189,49 @@
   <main class="ranking-container" id="leaderboard">
     
     <article class="guild-row aramitas">
-      <div class="heraldic-frame">
-        <img src="Aramitas-logo.png" alt="Aramitas">
-      </div>
+      <div class="heraldic-frame"><img src="Aramitas-logo.png"></div>
       <div class="guild-info">
-        <div class="name-motto">
-          <p>Splendore e Nobiltà</p>
-          <h2>Aramitas</h2>
-        </div>
-        <div class="guild-score">
-          <span class="score-val">850</span>
-          <p class="score-label">Meriti</p>
-        </div>
+        <div class="name-motto"><p>Splendore e Nobiltà</p><h2>Aramitas</h2></div>
+        <div class="guild-score"><span class="score-val">850</span></div>
       </div>
     </article>
 
     <article class="guild-row shamash">
-      <div class="heraldic-frame">
-        <img src="Shamash-logo.png" alt="Shamash">
-      </div>
+      <div class="heraldic-frame"><img src="Shamash-logo.png"></div>
       <div class="guild-info">
-        <div class="name-motto">
-          <p>Saggezza e Visione</p>
-          <h2>Shamash</h2>
-        </div>
-        <div class="guild-score">
-          <span class="score-val">728</span>
-          <p class="score-label">Meriti</p>
-        </div>
+        <div class="name-motto"><p>Saggezza e Visione</p><h2>Shamash</h2></div>
+        <div class="guild-score"><span class="score-val">728</span></div>
       </div>
     </article>
 
     <article class="guild-row schelby">
-      <div class="heraldic-frame">
-        <img src="schelby-logo.png" alt="Shelby">
-      </div>
+      <div class="heraldic-frame"><img src="schelby-logo.png"></div>
       <div class="guild-info">
-        <div class="name-motto">
-          <p>Il mondo non è giusto</p>
-          <h2>Shelby</h2>
-        </div>
-        <div class="guild-score">
-          <span class="score-val">720</span>
-          <p class="score-label">Meriti</p>
-        </div>
+        <div class="name-motto"><p>Il mondo non è giusto</p><h2>Shelby</h2></div>
+        <div class="guild-score"><span class="score-val">720</span></div>
       </div>
     </article>
 
     <article class="guild-row derek">
-      <div class="heraldic-frame">
-        <img src="Derek-logo.png" alt="Martello Saldo">
-      </div>
+      <div class="heraldic-frame"><img src="Derek-logo.png"></div>
       <div class="guild-info">
-        <div class="name-motto">
-          <p>Resistere è Vittoria</p>
-          <h2>Martello Saldo</h2>
-        </div>
-        <div class="guild-score">
-          <span class="score-val">604</span>
-          <p class="score-label">Meriti</p>
-        </div>
+        <div class="name-motto"><p>Resistere è Vittoria</p><h2>Martello Saldo</h2></div>
+        <div class="guild-score"><span class="score-val">604</span></div>
       </div>
     </article>
 
   </main>
 
   <script>
-    function sortLeaderboard() {
+    function sortBoard() {
       const container = document.getElementById('leaderboard');
       const rows = Array.from(container.querySelectorAll('.guild-row'));
-
       rows.sort((a, b) => {
-        const valA = parseInt(a.querySelector('.score-val').textContent);
-        const valB = parseInt(b.querySelector('.score-val').textContent);
-        return valB - valA;
+        return parseInt(b.querySelector('.score-val').textContent) - parseInt(a.querySelector('.score-val').textContent);
       });
-
       rows.forEach(row => container.appendChild(row));
     }
-    window.onload = sortLeaderboard;
+    window.onload = sortBoard;
   </script>
 
 </body>
