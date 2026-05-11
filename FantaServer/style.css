@@ -1,0 +1,157 @@
+/* RESET BASE */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* SFONDO BAROCCO */
+body{
+    font-family:'Cormorant Garamond', serif;
+    color:#e8e2d0;
+    min-height:100vh;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(70, 0, 130), transparent 40%),
+        radial-gradient(circle at 80% 70%, rgba(70, 0, 130), transparent 40%),
+        linear-gradient(135deg,#19101a,#0d080f);
+}
+
+/* CONTENITORE */
+.container{
+    max-width:750px;
+    margin:auto;
+    padding:30px 15px;
+}
+
+/* TITOLO */
+.titolo{
+    font-family:'Cinzel', serif;
+    text-align:center;
+    font-size:26px;
+    color:#d4af37;
+    margin-bottom:35px;
+    letter-spacing:2px;
+}
+
+/* CARD UTENTE */
+.card{
+    display:flex;
+    align-items:center;
+    padding:18px;
+    margin-bottom:20px;
+    background:rgba(20,15,12,0.9);
+    border:1px solid #2d2218;
+    border-radius:12px;
+}
+
+/* POSIZIONE */
+.posizione{
+    width:45px;
+    text-align:center;
+    font-family:'Cinzel', serif;
+    font-size:20px;
+}
+
+/* AVATAR */
+.avatar{
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    object-fit:cover;
+    margin:0 16px;
+    border:2px solid #3a2f1b;
+}
+
+/* INFO */
+.info{
+    flex:1;
+}
+
+.nickname{
+    font-size:18px;
+    font-weight:600;
+}
+
+.ruolo{
+    font-size:14px;
+    opacity:0.6;
+}
+
+/* PUNTI */
+.punti{
+    text-align:right;
+}
+
+.valore{
+    font-size:18px;
+    font-weight:600;
+}
+
+.label{
+    font-size:13px;
+    opacity:0.5;
+}
+
+/* COLORI PUNTI */
+.positivo .valore{ color:#3d8b5c; }
+.zero .valore{ color:#c9a227; }
+.negativo .valore{ color:#b23a3a; }
+
+/* PODIO */
+.first{ border-color:#d4af37; }
+.second{ border-color:#c0c0c0; }
+.third{ border-color:#cd7f32; }
+
+/* ULTIMO */
+.last{
+    border-color:#5a1c1c;
+    background:rgba(30,12,12,0.9);
+}
+
+/* ========================= */
+/* SCROLLBAR BAROCCO DARK */
+/* ========================= */
+
+/* Funziona su Chrome, Edge, Safari */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #14100d; /* sfondo barra */
+    border-left: 1px solid #2d2218;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        180deg,
+        #5c4524,
+        #3a2b17
+    );
+    border-radius: 10px;
+    border: 2px solid #14100d;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+        180deg,
+        #7a5a2f,
+        #4a361c
+    );
+}
+
+/* Versione per Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #5c4524 #14100d;
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+    .avatar{
+        width:48px;
+        height:48px;
+    }
+    .nickname{ font-size:15px; }
+    .valore{ font-size:15px; }
+}
