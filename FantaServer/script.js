@@ -3,7 +3,7 @@ const utenti = [
     { nome:"Ludohfantastico", ruolo:"Cancelliere ad interim delle Aespa", punti:22, img:"Ludo.jpg" },
     { nome:"Felis", ruolo:"Il tupperaio matto", punti:55, img:"Felis.jpg" },
     { nome:"Manel", ruolo:" ", punti:85, img:"profilo.png" },
-    { nome:"Sofy", ruolo:" ", punti:115, img:"profilo.png" },
+    { nome:"Sosò", ruolo:"la voce della verità", punti:115, img:"Sofy.jpg" },
     { nome:"Giulia", ruolo:" ", punti:145, img:"profilo.png" },
     { nome:"Diego", ruolo:" ", punti:105, img:"profilo.png" },
     { nome:"Alien", ruolo:" ", punti:40, img:"profilo.png" },
