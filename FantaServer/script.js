@@ -14,7 +14,7 @@ const utenti = [
     { nome:"Cho", ruolo:" ", punti:90, img:"profilo.png" },
     { nome:"Velia", ruolo:" ", punti:85, img:"profilo.png" },
     { nome:"Roman", ruolo:" ", punti:25, img:"profilo.png" },
-    { nome:"Lunatica", ruolo:" ", punti:65, img:"profilo.png" },
+    { nome:"Lunatica", ruolo:"WINX FATA GUARDIANA DEL LUNAPARK", punti:65, img:"miri.jpg" },
     { nome:"Spartaco", ruolo:" ", punti:20, img:"profilo.png" },
     { nome:"andrea", ruolo:" ", punti:70, img:"profilo.png" },
     { nome:"MidNight", ruolo:" ", punti:85, img:"profilo.png" },
