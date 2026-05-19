@@ -17,12 +17,12 @@ const utenti = [
     { nome:"Lunatica", ruolo:"WINX FATA GUARDIANA DEL LUNAPARK", punti:110, img:"miri.jpg" },
     { nome:"Spartaco", ruolo:" ", punti:60, img:"profilo.png" },
     { nome:"andrea", ruolo:" ", punti:125, img:"profilo.png" },
-    { nome:"MidNight", ruolo:" ", punti:200, img:"profilo.png" },
+    { nome:"MidNaight", ruolo:" ", punti:200, img:"profilo.png" },
     { nome:"Guido", ruolo:" ", punti:100, img:"profilo.png" },
     { nome:"Samuel", ruolo:" ", punti:65, img:"profilo.png" },
     { nome:"Miki", ruolo:" ", punti:40, img:"profilo.png" },
     { nome:"Aself", ruolo:" ", punti:40, img:"profilo.png" },
-    { nome:"Aself", ruolo:" ", punti:15, img:"profilo.png" },
+    { nome:"Giovanni", ruolo:" ", punti:15, img:"profilo.png" },
 ];
 
 // ORDINA PER PUNTI
