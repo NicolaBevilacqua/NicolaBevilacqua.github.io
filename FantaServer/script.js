@@ -2,7 +2,7 @@
 const utenti = [
     { nome:"Ludohfantastico", ruolo:"Cancelliere ad interim delle Aespa", punti:132, img:"Ludo.jpg" },
     { nome:"Felis", ruolo:"Il tupperaio matto", punti:170, img:"Felis.jpg" },
-    { nome:"Manel", ruolo:"il Musicofilo", punti:180, img:"manel.jpeg" },
+    { nome:"Manel", ruolo:"il Musicofilo", punti:180, img:"Manel.jpeg" },
     { nome:"Sosò", ruolo:"la voce della verità", punti:195, img:"Sofy.jpg" },
     { nome:"La Madrina", ruolo:"Ma dici vero?!", punti:445, img:"Giulia.png" },
     { nome:"Il SANTO", ruolo:"Ispiratore e protettore", punti:365, img:"diego.png" },
@@ -12,7 +12,7 @@ const utenti = [
     { nome:"herzlos", ruolo:"THE BOSS", punti:390, img:"herzlos.png" },
     { nome:"Pyro", ruolo:" ", punti:95, img:"profilo.png" },
     { nome:"Cho", ruolo:" ", punti:265, img:"profilo.png" },
-    { nome:"Velia", ruolo:" ", punti:360, img:"profilo.png" },
+    { nome:"veve ga Kill!", ruolo:"si va in scena", punti:360, img:"Velia.jpeg" },
     { nome:"Roman", ruolo:" ", punti:160, img:"profilo.png" },
     { nome:"Lunatica", ruolo:"WINX FATA GUARDIANA DEL LUNAPARK", punti:190, img:"miri.jpg" },
     { nome:"Spartaco", ruolo:" ", punti:100, img:"profilo.png" },
